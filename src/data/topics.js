@@ -1,0 +1,22 @@
+export const topics = [
+    { label: "Introduction & Account Types", value: "introduction_account_types" },
+    { label: "Suitability", value: "suitability" },
+    { label: "Equities", value: "equities" },
+    { label: "Debt Securities", value: "debt_securities" },
+    { label: "Corporate Debt Securities", value: "corporate_debt_securities" },
+    { label: "Municipal Debt Securities", value: "municipal_debt_securities" },
+    { label: "Treasury Securities", value: "treasury_securities" },
+    { label: "Investment Companies", value: "investment_companies" },
+    { label: "Insurance Products", value: "insurance_products" },
+    { label: "Options", value: "options" },
+    { label: "Other Managed Products", value: "other_managed_products" },
+    { label: "Other Products CMO", value: "other_products_cmo" },
+    { label: "Portfolio Analysis", value: "portfolio_analysis" },
+    { label: "Risks Disclosures", value: "risks_disclosures" },
+    { label: "Handling Customer Accounts", value: "handling_customer_accounts" },
+    { label: "Order Types and Customer Accounts", value: "order_types_and_customer_accounts" },
+    { label: "Processing Orders", value: "processing_orders" },
+    { label: "Complaint Resolution", value: "complaint_resolution" },
+    { label: "Communications with the Public", value: "communications_with_the_public" },
+    { label: "New Issues, Exemptions, & Wrap-Up", value: "new_issues_exemptions_wrap_up" }
+];
