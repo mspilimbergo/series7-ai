@@ -12,98 +12,45 @@ import { Label } from "@/components/ui/label"
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs"
 import axios from "axios"
 import { useRouter } from 'next/navigation'
-import { useEffect, useState } from "react"
+import { useState } from "react"
 
 export default function SignUpSuccess() {
     const router = useRouter();
-    const supabase = createClientComponentClient()    
-    const [stripeResult, setStripeResult] = useState("nothing");
+    const supabase = createClientComponentClient() 
 
     const [formData, setFormData] = useState({
         "email": '',
         "password": '',
-    })
-
-    // const checkLogin = async () => {
-    //   const { data: {session}} = await supabase.auth.getSession();
-    //   if (session) {
-    //     console.log(session)
-    //     router.push('/dashboard')
-    //   }
-    // }
-
-    useEffect(() => {    
-        // Get user_id from query params on load
-        const query = new URLSearchParams(window.location.search);
-        const idParams = query.getAll('id');
-        if (query.get('success')) {
-            setStripeResult('success');
-        //   const userId = idParams[0];
-            
-        //   getUserEmail(userId);
-          // Update newly signed up user's Supabase row to include their stripe_id
-          // axios.post('/api/update-stripe-user', { user_id: userId });
-        }
-      }, []);
-
-    useEffect(() => {
-        // checkLogin()
-        console.log(formData) 
-    }, [formData])
-    // const router = useRouter();
+    })    
 
     const changeHandler = (e) => {
         const {name, value} = e.target;
         setFormData((prevState) => ({...prevState, [name]: value}))
     }
 
-    async function handleSignUp(event) {
-        console.log("IN handle sign in")
-        // console.log(formData)
+    async function handleSignUp(event) {    
         event.preventDefault()
 
-        let bodyData = {
-            email: formData.email,
-            password: formData.password
-        }
-        bodyData = JSON.stringify(bodyData)
-
-        console.log(bodyData)
-        // const res = await axios.post('/api/confirm-signup', {bodyData})
-        const res = await axios.post(`/api/confirm-signup`, {email: formData.email,password: formData.password});
-        // const { data } = await axios.post('/api/confirm-signup',{email: formData.email,password: formData.password});
-        console.log(res)
-        // if (data) {
-        //   const {data: newSignIn, error} = await supabase.auth.signInWithPassword(
-        //     {email, 
-        //       password
-        //     }
-        //       );
-        //   if (error) {
-        //     console.log
-        //   }
-        //     router.push('/dashboard')
-        // }
-        // if (res.data === 'success') {
-        //     router.push('/dashboard')
-        // }
-        // if (res)
-        // const {data, error} = await supabase.auth.signUp({
-        //     email: formData.email,
-        //     password: formData.password,
-        //     options: {
-        //         emailRedirectTo: `http:localhost:3000/api/auth/callback`
-        //     }
-        // })   
-        // if (error) {
-        //     console.log(error)
-        //     return;
-        // }
-        // if (data) {
-        //     console.log(data)
-        //     router.push('/dashboard');
-        // }
-        
+        const res = await axios.post('/api/confirm-signup', {email: formData.email,password: formData.password});
+        // console.log(res.status === 200)
+        console.log("RESULT FROM /api/confirm-signup", res.data.data)
+        if (res.data.data === "success") {
+          console.log("SUCCESS")
+          const {data, error} = await supabase.auth.signInWithPassword(
+            {
+              email: formData.email, 
+              password: formData.password,
+              options: {
+                redirectTo: `${process.env.CLIENT_URL}/api/auth/callback`
+              }
+            }
+              );
+          if (error) {
+            console.log(error)
+            return;
+          }
+          router.push('/dashboard')
+        }                
     }
 
     return (
