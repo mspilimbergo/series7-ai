@@ -63,6 +63,7 @@
   "devDependencies": {
     "@types/react-slick": "^0.23.10",
     "@types/string-similarity": "^4.0.0",
+    "encoding": "^0.1.13",
     "prisma": "^5.1.1"
   }
 }
