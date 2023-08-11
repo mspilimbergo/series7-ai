@@ -1,6 +1,5 @@
 
 import MockTest from "@/components/forms/MockTest";
-import { getAuthSession } from "@/lib/nextauth";
 
 export const metadata = {
   title: "Quiz | Quizmify",
@@ -14,7 +13,7 @@ interface Props {
 }
 
 const Quiz = async ({ searchParams }: Props) => {
-  const session = await getAuthSession();
+  // const session = await getAuthSession();
   // if (!session?.user) {
   //   redirect("/");
   // }
