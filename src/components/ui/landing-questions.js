@@ -1,5 +1,6 @@
 'use client'
 import LoadingQuestions from "@/components/LoadingQuestions";
+import CTAButton from "@/components/ui/CTAButton";
 import { Button } from "@/components/ui/button";
 import { Card, CardDescription, CardHeader } from "@/components/ui/card";
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
@@ -200,7 +201,8 @@ import { useEffect, useState } from 'react';
             );
           })}          
           <div>          
-            <Button className="w-[100%] mb-4">Start Practicing Now!</Button>
+            {/* <Button className="w-[100%] mb-4">Start Practicing Now!</Button> */}
+            <CTAButton text={"Start Practicing"} />
           </div>
         </div>
       </div>

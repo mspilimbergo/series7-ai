@@ -51,7 +51,7 @@ const Feedback = () => {
               <p className='text-[#6D737A]'>Various versions have evolved over the years, sometimes by accident.</p>
             </div>
             {/* Make the div below a row with three columns for the feedback card */}            
-            <div className='grid grid-cols-2'>
+            <div className='grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2'>
             
             
                 {/* <FeedbackCard /> */}
