@@ -111,7 +111,7 @@ const MockTest = () => {
     <div className="absolute -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
       <Card>
         <CardHeader>
-          <CardTitle className="text-2xl font-bold">Tutor Mode Creation</CardTitle>
+          <CardTitle className="text-2xl font-bold">Mock Test creation</CardTitle>
           {/* <CardDescription>Choose a topic</CardDescription> */}
           <form onSubmit={handleSubmit}> 
           <div className="flex flex-col space-y-1.5 mt-4">
