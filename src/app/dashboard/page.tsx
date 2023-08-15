@@ -14,8 +14,8 @@ const stripePromise = loadStripe(
 type Props = {};
 
 export const metadata = {
-  title: "Dashboard | Quizmify",
-  description: "Quiz yourself on anything!",
+  title: "Dashboard | Series 7 AI",
+  description: "Put your Series 7 skills to the test with our AI-powered practice problems.",
 };
 
 const Dasboard = async (props: Props) => {
