@@ -1,7 +1,14 @@
 'use client';
 
 import { useRef, useState } from 'react';
-import { AiOutlineArrowDown, AiOutlineArrowUp } from 'react-icons/ai';
+
+const DropDownMenu = () => {
+  return (
+    <div>
+      
+    </div>
+  )
+}
 
 interface Props {
     id: number;
@@ -37,14 +44,18 @@ const AccordionItem: React.FC<Props> = ({ question, answer, id }) => {
             activeIndex === id ? 'text-brand-gray-600' : 'text-brand-gray-400'
           }`}
         >
-          <span className='lg:text-lg font-semibold md:text-xl xl:text-xl'>{question}</span>
+          <div className='flex'>
+            <span className='lg:text-lg font-semibold md:text-xl xl:text-xl text-left'>{question}</span>
+            {/* {activeIndex === id ? (
+              // <AiOutlineArrowUp size={30} className='w-5 h-5 xl:w-8 xl:h-8 stroke-[2px]' />
+              <AiOutlineArrowUp size={25}  />
+            ) : (
+              <AiOutlineArrowDown size={25}/>
+            )} */}
+          </div>
+          
   
-          {activeIndex === id ? (
-            // <AiOutlineArrowUp size={30} className='w-5 h-5 xl:w-8 xl:h-8 stroke-[2px]' />
-            <AiOutlineArrowUp size={25}  />
-          ) : (
-            <AiOutlineArrowDown size={25}/>
-          )}
+
         </button>
   
         <div

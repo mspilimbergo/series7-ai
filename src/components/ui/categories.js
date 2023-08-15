@@ -1,36 +1,53 @@
-import CategoryCard from '@/components/ui/category-card'
-import { AiOutlineCamera } from 'react-icons/ai'
-import { BiData } from 'react-icons/bi'
-import { HiOutlineBriefcase } from 'react-icons/hi'
-import { TbMicrophone2, TbMusic } from 'react-icons/tb'
-import { TiHtml5 } from 'react-icons/ti'
-import { WiSunrise } from 'react-icons/wi'
 import AccordionItem from '../AccordionItem'
 
 const topics = [
   {
     id: 1,
-    question: 'When will I start seeing quotes?',
+    question: 'Seeks Business for the Broker-Dealer from Customers and Potential Customers',
     answer:
-      'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum ea at iusto illum? Ipsam expedita quis nostrum, distinctio earum debitis.',
+      'A. Networking, Seminars, and Sales Presentations B. Prospecting New Customers C. Communicating with the Public',
   },
   {
     id: 2,
-    question: 'How can I pay my fabricator?',
+    question: 'Opens Accounts After Obtaining and Evaluating Customers’ Financial Profile and Investment Objectives',
     answer:
-      'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum ea at iusto illum? Ipsam expedita quis nostrum, distinctio earum debitis.',
+      'A. Customer Identification and Verification B. Customer Account Information C. Recommendations and Investment Objectives D. Types of Accounts E. Account Registration Types',
   },
   {
-    id: 3,
-    question: 'Who is liable if my project has issues?',
+    id: 3,  
+    question: 'Provides Customers with Information About Investments, Makes Suitable Recommendations, Transfers Assets and Maintains Appropriate Records',
     answer:
-      'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum ea at iusto illum? Ipsam expedita quis nostrum, distinctio earum debitis.',
+      'A. Types of Investments B. Investment Risks and Strategies C. Presentation of Investment Information and Recommendations D. Customer Portfolio Analysis and Making Suitable Recommendations E. Order Entry, Execution, and Confirmation F. Account Records and Maintenance',
   },
   {
     id: 4,
-    question: 'Can I make another quote request?',
+    question: 'Obtains and Verifies Customers’ Purchase and Sales Instructions; Processes, Completes and Confirms Transactions',
     answer:
-      'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum ea at iusto illum? Ipsam expedita quis nostrum, distinctio earum debitis.',
+      'A. Order Types and Order Entry B. Trade Execution and Settlement C. Confirmations and Account Statements D. Customer Complaints and Recordkeeping',
+  },
+  {
+    id: 5,
+    question: 'Understanding and Explaining the Securities Markets, the Broker Dealer’s Operations, and Customer Accounts',
+    answer:
+      'A. Market Types and Characteristics B. Broker-Dealer Operations C. Customer Account Statements and Confirmations D. Tax Consequences of Various Transactions',
+  },
+  {
+    id: 6,
+    question: 'Understanding and Explaining Other Packaged Products, Retirement Plans, and Regulations',
+    answer:
+      'A. Characteristics of Different Investment Companies B. Characteristics of Variable Annuities and Life Insurance C. Characteristics of Direct Participation Programs (DPPs) D. Retirement and Pension Plans E. Federal Regulations and Industry Standards',
+  },
+  {
+    id: 7,
+    question: ' Understanding and Explaining Options, Rights, Warrants, and Taxes',
+    answer:
+      'A. Characteristics and Risks of Options B. Tax Consequences of Various Securities Transactions',
+  },
+  {
+    id: 8,
+    question: 'Understanding and Explaining Customer Accounts, Margin Accounts, and Regulations',
+    answer:
+      'A. Opening Customer Accounts B. Margin Requirements C. Regulations Pertaining to Customer Accounts',
   },
 ];
 
@@ -48,7 +65,7 @@ const Categories = () => {
                     {/* <ProductCard /> */}
                   </div>
                 ))}
-                    <CategoryCard title={'Design'} />
+                    {/* <CategoryCard title={'Design'} />
                     <CategoryCard icons={<TiHtml5 size={30} />} title={'Development'} />
                     <CategoryCard icons={<TbMicrophone2 size={30} />} title={'Marketing'} />
                     <CategoryCard icons={<HiOutlineBriefcase size={30} />} title={'Business'} />
@@ -56,7 +73,7 @@ const Categories = () => {
                     <CategoryCard icons={<WiSunrise size={30} />} title={'Lifestyle'} />
                     <CategoryCard icons={<AiOutlineCamera size={30} />} title={'Photography'} />
                     <CategoryCard icons={<TbMusic size={30} />} title={'Music'} />
-                    <CategoryCard icons={<BiData size={30} />} title={'Data Science'} />
+                    <CategoryCard icons={<BiData size={30} />} title={'Data Science'} /> */}
                 </div>
         
         
