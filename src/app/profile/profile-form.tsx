@@ -150,7 +150,7 @@ export function ProfileForm({user}: any) {
             Modify Subscription
           </Button>
         </div>
-        <Button type="button" onClick={() => router.back()} >Return to Dashboard</Button>
+        <Button type="button" onClick={() => router.push('/dashboard')} >Return to Dashboard</Button>
       </form>
     </Form>
   )
