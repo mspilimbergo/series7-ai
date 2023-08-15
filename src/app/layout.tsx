@@ -1,30 +1,27 @@
 
-import Navbar from "@/components/Navbar";
 import Providers from "@/components/Providers";
 import { Toaster } from "@/components/ui/toaster";
 import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+// import { useRouter } from "next/router";
 import "./globals.css";
 export const dynamic = 'force-dynamic'
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Quizmify",
+  title: "Series 7 AI",
   description: "Quiz yourself on anything!",
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({children,}: {children: React.ReactNode;}) {
+  // const router = useRouter();
   return (
     <html lang="en">
       <body className={cn(inter.className, "antialiased min-h-screen pt-16")}>
         <Providers>
-          <Navbar />
+          {/* <Navbar  /> */}
           {children}
           <Toaster />
         </Providers>

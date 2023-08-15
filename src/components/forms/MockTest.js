@@ -1,10 +1,10 @@
 "use client";
 import {
-    Card,
-    CardContent,
-    CardDescription,
-    CardHeader,
-    CardTitle,
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
 } from "@/components/ui/card";
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 import { useRouter } from "next/navigation";
@@ -123,8 +123,15 @@ const MockTest = () => {
                   labelledBy="Select"
                   isCreatable={true}
                 /> */}
-                <CardDescription>The mock test will provide you with a set of questions, just like the real exam.</CardDescription>
+                <CardDescription>Each candidate’s exam consists of a total of 135 items (125 scored and 10 unscored). <br/>There is no penalty for guessing. Therefore, candidates should attempt to answer all items. <br/> Candidates will be allowed 3 hours and 45 minutes to complete the Series 7 exam.</CardDescription>
                 <CardDescription>You will be timed and scored at the end. </CardDescription>
+                
+                {/* "The exam is administered via computer. A tutorial on how to take the exam is provided prior to taking the exam. Each
+candidate’s exam includes 10 additional, unidentified pretest items that do not contribute toward the candidate's
+score. The pretest items are randomly distributed throughout the exam. Therefore, ach candidate’s exam consists of
+a total of 135 items (125 scored and 10 unscored). There is no penalty for guessing. Therefore, candidates should
+attempt to answer all items. Candidates will be allowed 3 hours and 45 minutes to complete the Series 7 exam." */}
+              
                 {/* <p className="text-sm text-slate-400">The mock test will provide you with a set of questions, just like the real exam.</p>
                 <p className="text-sm text-slate-400">You will be timed and scored at the end. </p> */}
             </div>

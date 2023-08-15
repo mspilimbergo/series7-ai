@@ -1,4 +1,5 @@
 import DetailsDialog from "@/components/DetailsDialog";
+import DashboardNavBar from "@/components/dashboard/DashboardNavBar";
 import QuizMeCard from "@/components/dashboard/QuizMeCard";
 import TutorCard from "@/components/dashboard/TutorCard";
 import { loadStripe } from '@stripe/stripe-js';
@@ -30,6 +31,7 @@ const Dasboard = async (props: Props) => {
   return (
     // <main className="absolute -translate-x-1/2 -translate-y-1/2 md:w-[80vw] max-w-4xl w-[90vw] top-1/2 left-1/2">
       <main className="p-8 mx-auto max-w-7xl">
+        <DashboardNavBar />
       <div className="flex items-center">
         <h2 className="mr-2 text-3xl font-bold tracking-tight">Series 7 Tools</h2>
         <DetailsDialog />

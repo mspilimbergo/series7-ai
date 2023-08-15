@@ -60,7 +60,7 @@ export default function SignUpSuccess() {
        <CardHeader>
          {/* <CardTitle> <h1 className="text-2xl font-semibold tracking-tight">Sign In</h1></CardTitle> */}
          <h1 className="text-2xl font-semibold tracking-tight">Create your account</h1>
-         <CardDescription>Enter your email below to sign in.</CardDescription>
+         <CardDescription>Enter your email below to create an account.</CardDescription>
        </CardHeader>
        <form onSubmit={handleSignUp}>
        <CardContent>
@@ -78,7 +78,7 @@ export default function SignUpSuccess() {
        </CardContent>
        <CardFooter className="flex">
          {/* <Button variant="outline">Cancel</Button> */}
-         <Button type="submit" className="w-full" >Sign In</Button>
+         <Button type="submit" className="w-full" >Create New Account</Button>
        </CardFooter>
        </form>
      </Card>   

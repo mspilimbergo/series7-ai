@@ -65,6 +65,9 @@ const MCQ = ({ game, isMockTest }) => {
   const [answeredQuestions, setAnsweredQuestions] = React.useState([]);
   const [accuracy, setAccuracy] = React.useState(0);
   const [showAnswer, setShowAnswer] = React.useState(false);
+  let finishTime = new Date();
+  finishTime.setMinutes(finishTime.getMinutes() + 225)
+  const [mockFinishTime, setMockFinishTime] = React.useState(new Date(finishTime));
   // let accuracy = 0;
 
   useEffect(() => {
@@ -130,10 +133,15 @@ const MCQ = ({ game, isMockTest }) => {
       if (isShowingStats) return;
       if (!hasEnded) {
         setNow(new Date());
+        // setMockEndTime(new Date())
       }
     }, 1000);
     return () => clearInterval(interval);
   }, [hasEnded]);
+
+  const setMockEndTime = async () => {
+    
+  }
 
   const endGame = async () => {
     setTimeEnded(new Date());
@@ -325,10 +333,17 @@ const MCQ = ({ game, isMockTest }) => {
                 {game[questionIndex].topic}
               </span>
             </p>
-            <div className="flex self-start mt-3 text-slate-400">
+            {!isMockTest ? (
+              <div className="flex self-start mt-3 text-slate-400">
               <Timer className="mr-2" />
-              {formatTimeDelta(differenceInSeconds(now, timeStarted))}
-            </div>
+                {formatTimeDelta(differenceInSeconds(now, timeStarted))}
+              </div>  
+            ): 
+              <div className="flex self-start mt-3 text-slate-400">
+                <Timer className="mr-2" />
+                  {formatTimeDelta(differenceInSeconds(mockFinishTime, now))}
+              </div>
+            }
           </div>
           {!isMockTest && (
             <MCQCounter

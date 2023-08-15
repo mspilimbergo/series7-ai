@@ -5,11 +5,8 @@ import { Progress } from "./ui/progress";
 type Props = { finished: boolean };
 
 const loadingTexts = [
-  "Generating questions...",
-  "Unleashing the power of curiosity...",
-  "Diving deep into the ocean of questions..",
-  "Harnessing the collective knowledge of the cosmos...",
-  "Igniting the flame of wonder and exploration...",
+  "Preparing Series 7 Questions with our AI...",
+  "AI-Generated practice problems coming up...",
 ];
 
 const LoadingQuestions = ({ finished }: Props) => {
@@ -42,7 +39,7 @@ const LoadingQuestions = ({ finished }: Props) => {
   return (
     <div className="flex items-center justify-center h-screen">
     <div className="w-[60vw] md:w-[40vw] flex flex-col items-center">
-      <Image src={"/loading.gif"} width={400} height={400} alt="loading" />
+      <Image src={"/loading-new.gif"} width={400} height={400} alt="loading" />
       <Progress value={progress} className="w-full mt-4" />
       <h1 className="mt-2 text-xl">{loadingText}</h1>
     </div>

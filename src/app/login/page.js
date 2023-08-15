@@ -1,4 +1,5 @@
 'use client'
+import SignInNavbar from "@/components/SignInNavbar"
 import { Button } from "@/components/ui/button"
 import {
   Card,
@@ -77,6 +78,8 @@ export default function SignIn() {
         }
     }
     return (
+      <div>
+        <SignInNavbar />
       <div className="absolute -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
          {/* <div className={cn("grid gap-6", className)} {...props}> */}
          <Card className="w-[400px]">
@@ -106,8 +109,14 @@ export default function SignIn() {
        </form>
      </Card>   
      </div>
+     </div>
    )
-  // return (
+ 
+}
+
+
+
+ // return (
   //    <div className="absolute -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
   //       {/* <div className={cn("grid gap-6", className)} {...props}> */}
   //       <Card className="w-[400px]">
@@ -137,9 +146,6 @@ export default function SignIn() {
   //   </Card>   
   //   </div>
   // )
-}
-
-
 // import * as React from "react"
 
 // import { Button } from "@/components/ui/button"
