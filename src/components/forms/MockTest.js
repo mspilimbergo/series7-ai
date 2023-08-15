@@ -111,7 +111,7 @@ const MockTest = () => {
     <div className="absolute -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
       <Card>
         <CardHeader>
-          <CardTitle className="text-2xl font-bold">Mock Test creation</CardTitle>
+          <CardTitle className="text-2xl font-bold">Mock Test</CardTitle>
           {/* <CardDescription>Choose a topic</CardDescription> */}
           <form onSubmit={handleSubmit}> 
           <div className="flex flex-col space-y-1.5 mt-4">
@@ -123,7 +123,7 @@ const MockTest = () => {
                   labelledBy="Select"
                   isCreatable={true}
                 /> */}
-                <CardDescription>Each candidate’s exam consists of a total of 135 items (125 scored and 10 unscored). <br/>There is no penalty for guessing. Therefore, candidates should attempt to answer all items. <br/> Candidates will be allowed 3 hours and 45 minutes to complete the Series 7 exam.</CardDescription>
+                <CardDescription>Each candidate’s exam consists of a total of <b> 135 items (125 scored and 10 unscored) </b>. <br/>There is no penalty for guessing. Therefore, candidates should attempt to answer all items. <br/> Candidates will be allowed  <b>3 hours and 45 minutes</b> to complete the Series 7 exam.</CardDescription>
                 <CardDescription>You will be timed and scored at the end. </CardDescription>
                 
                 {/* "The exam is administered via computer. A tutorial on how to take the exam is provided prior to taking the exam. Each
@@ -150,9 +150,15 @@ attempt to answer all items. Candidates will be allowed 3 hours and 45 minutes t
                 {/* <p className="text-sm text-slate-400">Click "begin" below to start the mock test.</p> */}
                 <CardDescription>Click "begin" below to start the mock test. </CardDescription>
               </div>
-              <Button className={'w-full mt-4'} type="submit">
+              <div className="flex mt-4 gap-4">
+                <Button type="button" variant={'secondary'} className="flex-1" onClick={() => router.push('/dashboard')} >
+                  Cancel
+                </Button>
+                <Button className="flex-1" type="submit">
                  Begin
                 </Button>
+              </div>
+              
           </form>
         </CardHeader>
         <CardContent>

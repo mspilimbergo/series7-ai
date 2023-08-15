@@ -141,9 +141,14 @@ const TutorMode = () => {
                 {/* <p>You can choose how many questions you would like to be quizzed on here.</p> */}
                 <p className="text-sm text-slate-400">You can choose how many questions you would like to be quizzed on here.</p>
               </div>
-              <Button className={'w-full mt-4'} type="submit">
+              <div className="flex mt-4 gap-4">
+                <Button type="button" variant={'secondary'} className="flex-1" onClick={() => router.push('/dashboard')} >
+                  Cancel
+                </Button>
+                <Button className="flex-1" type="submit">
                  Begin
                 </Button>
+              </div>
           </form>
         </CardHeader>
         <CardContent>
