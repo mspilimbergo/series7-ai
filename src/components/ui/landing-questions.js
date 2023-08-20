@@ -25,7 +25,7 @@ import { useEffect, useState } from 'react';
           let { data, error, status } = await supabase
             .from('questions')
             .select('*')
-            .limit(2)
+            .limit(3)
     
           if (error && status !== 406) {
             console.log("IS ERROR")
@@ -100,12 +100,12 @@ import { useEffect, useState } from 'react';
           </CardHeader>
         </Card>
         <div className="flex flex-col items-center justify-center w-full mt-4">
-          {JSON.parse(questions[0].options).map((option, index) => {
+          {questions[0].options_arr.map((option, index) => {
             return (
               <Button
-                key={option}
-                variant={selectedChoice === index ? "default" : "outline"}
-                className="justify-start w-full py-8 mb-4"
+                key={index}
+                variant={option === questions[0].answer ? "default" : "outline"}
+                className="justify-start w-full py-8 mb-4 p-8"
                 // onClick={() => {setSelectedChoice(index)}}
                 disabled="true"
               >
@@ -141,12 +141,12 @@ import { useEffect, useState } from 'react';
           </CardHeader>
         </Card>
         <div className="flex flex-col items-center justify-center w-full mt-4">
-          {JSON.parse(questions[1].options).map((option, index) => {
+          {questions[1].options_arr.map((option, index) => {
             return (
               <Button
-                key={option}
-                variant={selectedChoice === index ? "default" : "outline"}
-                className="justify-start w-full py-8 mb-4"
+                key={index}
+                variant={option === questions[1].answer ? "default" : "outline"}
+                className="justify-start w-full py-8 mb-4 p-8"
                 // onClick={() => {setSelectedChoice(index)}}
                 disabled="true"
               >
@@ -182,12 +182,12 @@ import { useEffect, useState } from 'react';
           </CardHeader>
         </Card>
         <div className="flex flex-col items-center justify-center w-full mt-4">
-          {JSON.parse(questions[1].options).map((option, index) => {
+          {questions[2].options_arr.map((option, index) => {
             return (
               <Button
                 key={option}
-                variant={selectedChoice === index ? "default" : "outline"}
-                className="justify-start w-full py-8 mb-4"
+                variant={option === questions[2].answer ? "default" : "outline"}
+                className="justify-start w-full py-8 mb-4 p-8"
                 // onClick={() => {setSelectedChoice(index)}}
                 disabled="true"
               >
