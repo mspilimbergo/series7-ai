@@ -2,13 +2,12 @@
 import {
   Card,
   CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
+  CardHeader
 } from "@/components/ui/card";
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 import { useRouter } from "next/navigation";
 import React, { useEffect } from "react";
+// import MdOutlineCancel from 'react-icons/fa';
 import { MultiSelect } from 'react-multi-select-component';
 import { topics } from "../../data/topics";
 import { Button } from "../ui/button";
@@ -61,15 +60,23 @@ const TutorMode = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     // const { data } = await supabase.from('todos').select()
-    const { data: questions, error } = await supabase
-        .from("questions")
-        .select("*")
-    if (error) {
-      console.log(error.message)
+    // const { data: questions, error } = await supabase
+    //     .from("questions")
+    //     .select("*")
+    // if (error) {
+    //   console.log(error.message)
+    // }
+    // const questionsParam = questions[0].id
+    const paramData = {
+      numberOfQuestions: numberOfQuestions,
+      topicsSelected: topicsSelected,
+      examType: "mcq",
     }
-    const questionsParam = questions[0].id
+    const examType = "mcq"
+    const topicsString = topicsSelected.map((topic) => topic.value).join(",");
+    console.log(topicsString)
     // console.log(test)
-    router.push(`/play/mcq/${questionsParam}`);
+    router.push(`/play/mcq/${numberOfQuestions}?topics=${topicsString}&type=${examType}`);
     // const res = await a//xios.post("/api/questions", { numberOfQuestions, topicsSelected });
     // console.log(res.data);s
     // const data = { 
@@ -110,25 +117,30 @@ const TutorMode = () => {
   // }
 
   return (
-    <div className="absolute -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
-      <Card>
+    // <main>
+    <div className="absolute -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2  md:w-995">
+      <h2 className="text-green-600		 mr-2 text-3xl font-bold tracking-tight text-center ">Tutor Mode</h2>      
+      <div className="mt-2 border-green-600 rounded border-t border-4 border-gray-400 w-[180px] mx-auto"></div>
+      <h3 className="text-gray-500 mt-4 text-xl text-center">Choose a topic </h3>
+      <Card className="mt-10">
         <CardHeader>
-          <CardTitle className="text-2xl font-bold">Tutor Mode Creation</CardTitle>
-          <CardDescription>Choose a topic</CardDescription>
+          {/* <CardTitle className="text-2xl font-bold">Tutor Mode Creation</CardTitle>
+          <CardDescription>Choose a topic</CardDescription> */}
           <form onSubmit={handleSubmit}> 
-          <div className="flex flex-col space-y-1.5 mt-4">
-                <label>Topic</label>
-                <MultiSelect
-                  options={topics}
-                  value={topicsSelected}
-                  onChange={(selectedOptions) => setTopicsSelected(selectedOptions)}
-                  labelledBy="Select"
-                  isCreatable={true}
-                />
-                <p className="text-sm text-slate-400">Please provide any topic you would like to be quizzed on here.</p>
-            </div>
-
-              <div className="flex flex-col space-y-1.5 mt-4">
+          <div className="flex flew-row gap-4 bg-slate-600 w-full">
+            <div className="flex flex-col flex-1">
+                  <label>Topic</label>
+                  <MultiSelect
+                    options={topics}
+                    value={topicsSelected}
+                    onChange={(selectedOptions) => setTopicsSelected(selectedOptions)}
+                    labelledBy="Select"
+                    isCreatable={true}
+                    className="mt-4"
+                  />
+                  <p className="text-sm text-slate-400 mt-4">Please provide any topic you would like to be quizzed on here.</p>
+              </div>
+            <div className="flex flex-col flex-1 bg-blue-300">
                 <label>Number of Questions</label>
                 <Input
                   type="number"
@@ -137,24 +149,43 @@ const TutorMode = () => {
                   onChange={(e) => setNumberOfQuestions(e.target.value)}
                   min={1}
                   max={30}
+                  className="mt-4"
                 />
                 {/* <p>You can choose how many questions you would like to be quizzed on here.</p> */}
-                <p className="text-sm text-slate-400">You can choose how many questions you would like to be quizzed on here.</p>
+                <p className="text-sm text-slate-400 mt-4">You can choose how many questions you would like to be quizzed on here.</p>
               </div>
-              <div className="flex mt-4 gap-4">
-                <Button type="button" variant={'secondary'} className="flex-1" onClick={() => router.push('/dashboard')} >
-                  Cancel
-                </Button>
-                <Button className="flex-1" type="submit">
-                 Begin
-                </Button>
+          </div>     
+          <div className="flex justify-center mt-8">
+           <div className="flex flex-row gap-4">
+           <Button
+                variant="secondary"
+                // onClick={() => setShowAnswer(!showAnswer)}
+                style={{ backgroundColor: "#373737", width: "140px", borderRadius: "8px" }}
+                className="text-white rounded-sm"
+                onClick={() => router.push('/dashboard')}
+              >
+                {/* <FaEye size={17} /> */}
+                <span className="ml-2">Cancel</span>
+              </Button>          
+            <Button
+              style={{ backgroundColor: "#4CA054", width: "140px", borderRadius: "8px" }}
+              className="rounded-[8px] w-32"
+              type="submit"
+              // size="lg"              
+            >
+              {/* <FaStepForward size={15} /> */}
+              <span className="ml-2">Next</span>
+              {/* <ChevronRight className="w-4 h-4 ml-2" /> */}
+            </Button>            
               </div>
+          </div>                            
           </form>
         </CardHeader>
         <CardContent>
         </CardContent>
       </Card>
     </div>
+    // </main>
   );
 };
 

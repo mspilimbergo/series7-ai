@@ -1,10 +1,10 @@
 
 import TutorMode from "@/components/forms/TutorMode";
 
-// export const metadata = {
-//   title: "Quiz | Quizmify",
-//   description: "Quiz yourself on anything!",
-// };
+export const metadata = {
+  title: "Tutor Mode | Series 7 AI",
+  description: "Practice your series 7 questions with our tutor mode.",
+};
 
 // interface Props {
 //   searchParams: {

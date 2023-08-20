@@ -1,4 +1,3 @@
-import DetailsDialog from "@/components/DetailsDialog";
 import DashboardNavBar from "@/components/dashboard/DashboardNavBar";
 import QuizMeCard from "@/components/dashboard/QuizMeCard";
 import TutorCard from "@/components/dashboard/TutorCard";
@@ -32,19 +31,18 @@ const Dasboard = async (props: Props) => {
     // <main className="absolute -translate-x-1/2 -translate-y-1/2 md:w-[80vw] max-w-4xl w-[90vw] top-1/2 left-1/2">
       <main className="p-8 mx-auto max-w-7xl">
         <DashboardNavBar />
-      <div className="flex items-center">
-        <h2 className="mr-2 text-3xl font-bold tracking-tight">Series 7 Tools</h2>
-        <DetailsDialog />
-      </div>
-      <div className="flex-column">
-        <h3 className="mr-2 mt-4 text-2xl tracking-tight">Use our friendly AI problem set generator to practice, using timed or tutor mode. </h3>
-        {/* <h6 className="mr-2 mt-4 text-xl tracking-tight"> Tutor mode gives you control over what kinds of questions and how many questions, as well as detailed explanations after each question.</h6> */}
-      </div>
-      <div className="grid gap-4 mt-4 md:grid-cols-2">
-        <QuizMeCard />
-        <TutorCard />
-        {/* <HistoryCard /> */}
-      </div>
+            <div className="flex justify-center flex-col">
+            <h2 className="text-green-600		 mr-2 text-3xl font-bold tracking-tight text-center ">Series 7 AI Tools</h2>      
+            <div className="mt-2 border-green-600 rounded border-t border-4 border-gray-400 w-[180px] mx-auto"></div>
+            <h3 className="text-gray-500 mt-10 text-xl text-center">Use our friendly AI problem set generator to practice, using timed or tutor mode. </h3>
+          </div>
+          <div className="flex flex-col md:flex-row gap-20 justify-center mt-10">
+            <QuizMeCard />
+            {/* <QuizMeCard /> */}
+            <TutorCard />
+            {/* <HistoryCard /> */}
+        </div>
+      
       <div className="grid gap-4 mt-4 md:grid-cols-2 lg:grid-cols-7">
         {/* <HotTopicsCard />
         <RecentActivityCard /> */}

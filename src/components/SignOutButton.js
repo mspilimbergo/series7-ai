@@ -17,6 +17,7 @@ const SignOutButton = ({ text }) => {
 
   return (
     <Button
+      className="md:text-base text-xs"
       variant={'default'}
       onClick={handleSignOut}
     >

@@ -9,6 +9,7 @@ const ProfileButton = ({ text }: Props) => {
 
   return (
     <Button
+      className="md:text-base text-xs"
       variant={'secondary'}
       onClick={() => router.push("/profile")}
     >

@@ -3,9 +3,9 @@ import AccuracyCard from "@/components/statistics/AccuracyCard";
 import ResultsList from "@/components/statistics/ResultsList";
 import TimeTakenCard from "@/components/statistics/TimeTakenCard";
 import {
-  Card,
-  CardDescription,
-  CardHeader
+    Card,
+    CardDescription,
+    CardHeader
 } from "@/components/ui/card";
 import { cn, formatTimeDelta } from "@/lib/utils";
 import { differenceInSeconds } from "date-fns";
@@ -44,8 +44,8 @@ import { useToast } from "./ui/use-toast";
 */
 // Use that as context for the rest of the code
 
-const MCQ = ({ game, isMockTest }) => {
-  // console.log("GAME", game)
+const MCQNew = ({ game, isMockTest }) => {
+  console.log("GAME", game)
   const router = useRouter();
   const [isShowingStats, setIsShowingStats] = React.useState(false);
   const [isChecking, setIsChecking] = React.useState(false);
@@ -99,7 +99,7 @@ const MCQ = ({ game, isMockTest }) => {
     // selectedChoiceString = selectedChoiceString.toLoswerCase().trim();
     // console.log(selectedChoiceString)
     const isCorrect = game[questionIndex].answer.toLowerCase().trim() === selectedChoiceString;
-    // console.log("isCorrect", isCorrect)
+    console.log("isCorrect", isCorrect)
     if (isCorrect) {
       return true;
     } else {
@@ -158,12 +158,12 @@ const MCQ = ({ game, isMockTest }) => {
   }
 
   const handleNext = React.useCallback(() => {
-    // if (hasEnded) {
-    //   console.log("CLICKED BUTTON")
-    //   setHasEnded(false);
-    //   setIsShowingStats(true);
-    //   return;
-    // }
+    if (hasEnded) {
+      console.log("CLICKED BUTTON")
+      setHasEnded(false);
+      setIsShowingStats(true);
+      return;
+    }
     const isCorrect = checkAnswer();
     setIsChecking(false);
     if (isCorrect) {
@@ -184,13 +184,11 @@ const MCQ = ({ game, isMockTest }) => {
       isCorrect: isCorrect,
       options: options,
       explanation: game[questionIndex].explanation,
-      id: game[questionIndex].id,
     }
     setAnsweredQuestions((answeredQuestions) => [...answeredQuestions, answeredQuestion]);
     if (questionIndex === game.length - 1) {
       endGame();
-      setIsShowingStats(true)
-      // setHasEnded(true);
+      setHasEnded(true);
       // console.log("answeredQuestions", answeredQuestions)
       return;
     }
@@ -269,7 +267,16 @@ const MCQ = ({ game, isMockTest }) => {
         >
           View Statistics
           <BarChart className="w-4 h-4 ml-2" />
-        </Button>        
+        </Button>
+        {/* <Link
+          // href={`/review/${game.id}`}
+          href={{pathname: '/review', query: {answeredQuestions: JSON.stringify(answeredQuestions)}}}
+          // href={`/statistics/${game.id}`}
+          className={cn(buttonVariants({ size: "lg" }), "mt-2")}          
+        >
+          View Statistics
+          <BarChart className="w-4 h-4 ml-2" />
+        </Link> */}
       </div>
     );
   }
@@ -286,11 +293,11 @@ const MCQ = ({ game, isMockTest }) => {
       }
       return acc;
     }, 0);
-    // console.log("totalCorrect", totalCorrect)
+    console.log("totalCorrect", totalCorrect)
     let tempAccuracy = (totalCorrect / answeredQuestions.length) * 100;
-    // console.log("accuracy1", tempAccuracy)
+    console.log("accuracy1", tempAccuracy)
     tempAccuracy = Math.round(tempAccuracy * 100) / 100;
-    // console.log("accuracy2", tempAccuracy)
+    console.log("accuracy2", tempAccuracy)
     return (
       <>
         <div className="p-8 mx-auto max-w-7xl">
@@ -396,12 +403,12 @@ const MCQ = ({ game, isMockTest }) => {
 
             <div className="mr-5  text-center divide-y divide-zinc-600/50">
 
-              <div className="p-6 px-4 mr-2 border  bg-gray-500 md:text-xl text-md text-white" style={{ backgroundColor: "#373737",borderRadius: "5px" }}>0{questionIndex + 1}</div>
+              <div className="p-6 px-4 mr-2 border  bg-gray-500 text-xl text-white" style={{ backgroundColor: "#373737",borderRadius: "5px" }}>0{questionIndex + 1}</div>
               {/* <div className="text-base text-slate-400">
                 {game.length}
               </div> */}
             </div>
-            <CardDescription className="flex-grow md:text-xl text-md">
+            <CardDescription className="flex-grow text-lg">
               {game[questionIndex]?.question}
             </CardDescription>
           </div>
@@ -516,7 +523,7 @@ const MCQ = ({ game, isMockTest }) => {
 
 };
 
-export default MCQ;
+export default MCQNew;
 
 /* 
 From MockTestConfirm
