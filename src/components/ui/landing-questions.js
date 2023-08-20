@@ -169,7 +169,7 @@ import { useEffect, useState } from 'react';
             <p>
               <span className="text-slate-400">Topic</span> &nbsp;
               <span className="px-2 py-1 text-white rounded-lg bg-slate-800">
-                {questions[1].topic}
+                {questions[2].topic}
               </span>
             </p>
           </div>                    
@@ -177,7 +177,7 @@ import { useEffect, useState } from 'react';
         <Card className="w-full mt-4">
           <CardHeader className="flex flex-row items-center">            
             <CardDescription className="flex-grow text-lg">
-              {questions[1]?.question}
+              {questions[2]?.question}
             </CardDescription>
           </CardHeader>
         </Card>
