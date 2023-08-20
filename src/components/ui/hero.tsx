@@ -44,7 +44,7 @@ export default function Hero() {
                     to Pass the <span  className='text-[#20B486]'>Series 7</span> 
                 </h1>
                 <p className='py-2 text-lg text-gray-600'>Set yourself up for success with an affordable subscription of $7 per month.</p>
-                <div className='max-w-[500px]'>
+                <div className='max-w-[500px] align-bottom'>
                     {/* <Button>Try a test!</Button> */}
                     {/* <ScrollButton scrollAmount={700} /> */}
                     <Button
@@ -70,8 +70,8 @@ export default function Hero() {
                     {/* </button> */}
                 {/* </form> */}
             </div>
-            
-            {/* <img  src={heroImg} className="md:order-last  order-first" /> */}
+                        
+            <img  src={'/hero-image-6.png'}  className="md:order-last  order-first" />
 
         </div>        
 
