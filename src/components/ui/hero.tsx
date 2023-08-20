@@ -3,6 +3,7 @@
 // import ScrollButton from '@/components/ui/scroll-button'
 import { Button } from '@/components/ui/button';
 import LandingQuestions from '@/components/ui/landing-questions';
+import Image from 'next/image';
 import { useEffect, useState } from 'react';
 
 export default function Hero() {
@@ -71,7 +72,7 @@ export default function Hero() {
                 {/* </form> */}
             </div>
                         
-            <img  src={'/hero-image-6.png'}  className="md:order-last  order-first" />
+            <Image loading={'eager'} src={'/hero-image-6.png'} width={800} height={800} className="md:order-last  order-first" alt='ai-questions-example' />
 
         </div>        
 
