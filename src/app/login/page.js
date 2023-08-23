@@ -1,5 +1,6 @@
 'use client'
 import SignInNavbar from "@/components/SignInNavbar"
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
 import { Button } from "@/components/ui/button"
 import {
   Card,
@@ -11,13 +12,14 @@ import {
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs"
+import Link from "next/link"
 import { useRouter } from 'next/navigation'
 import { useEffect, useState } from "react"
 
 export default function SignIn() {
-  const router = useRouter();
+    const router = useRouter();
     const supabase = createClientComponentClient()    
-
+    const [error, setError] = useState()
     const [formData, setFormData] = useState({
         "email": '',
         "password": '',
@@ -38,6 +40,7 @@ export default function SignIn() {
     // const router = useRouter();
 
     const changeHandler = (e) => {
+        if (error) setError(null)
         const {name, value} = e.target;
         setFormData((prevState) => ({...prevState, [name]: value}))
     }
@@ -45,7 +48,7 @@ export default function SignIn() {
     async function handleSignIn(event) {
         console.log("IN handle sign in")
         event.preventDefault()
-        const {data, error} = await supabase.auth.signInWithPassword({
+        const {data, error: signInError} = await supabase.auth.signInWithPassword({
             email: formData.email,
             password: formData.password,
             options: {
@@ -53,8 +56,9 @@ export default function SignIn() {
                 emailRedirectTo: `${process.env.CLIENT_URL}/api/auth/callback`
             }
         })   
-        if (error) {
-            console.log(error)
+        if (signInError) {
+          setError(signInError?.message)          
+          console.log(signInError)
             return;
         }
         if (data) {
@@ -82,6 +86,14 @@ export default function SignIn() {
         <SignInNavbar />
       <div className="absolute -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
          {/* <div className={cn("grid gap-6", className)} {...props}> */}
+         {error && (
+          <Alert variant="destructive" className="mb-4">
+            <AlertTitle>Sign In Error</AlertTitle>
+            <AlertDescription>
+              {error}
+            </AlertDescription>
+          </Alert>
+         )}
          <Card className="w-[400px]">
        <CardHeader>
          {/* <CardTitle> <h1 className="text-2xl font-semibold tracking-tight">Sign In</h1></CardTitle> */}
@@ -102,9 +114,18 @@ export default function SignIn() {
              </div>           
            </div>        
        </CardContent>
-       <CardFooter className="flex">
+       <CardFooter className="flex flex-col gap-4">
          {/* <Button variant="outline">Cancel</Button> */}
          <Button type="submit" className="w-full" >Sign In</Button>
+         <p className="px-8 text-center text-sm text-muted-foreground">
+              Forgot your password?{" "}
+              <Link
+                href="/password-reset"
+                className="underline underline-offset-4 hover:text-primary"
+              >
+                Reset it here
+              </Link>{" "}              
+            </p>
        </CardFooter>
        </form>
      </Card>   

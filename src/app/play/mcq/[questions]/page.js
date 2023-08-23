@@ -41,7 +41,7 @@ const MCQPage = async ({ params: {questions}, searchParams: {topics, type} }) =>
     const results = await Promise.all(
       mockExamTopics.map(async (topic) => {
         const { data, error } = await supabase
-          .from('questions')
+          .from('questions_versioned')
           .select('*')
           .eq('topic', topic.name)
           .limit(topic.limit);
@@ -135,7 +135,7 @@ const MCQPage = async ({ params: {questions}, searchParams: {topics, type} }) =>
     const results = await Promise.all(
       topicsWithLimits.map(async (topic) => {
         const { data, error } = await supabase
-          .from('questions')
+          .from('questions_versioned')
           .select('*')
           .eq('topic', topic.name)
           .limit(topic.limit);

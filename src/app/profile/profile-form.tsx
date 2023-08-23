@@ -23,7 +23,9 @@ import { cn } from "@/lib/utils"
 // } from "@/registry/new-york/ui/select"
 // import { Textarea } from "@/registry/new-york/ui/textarea"
 import { toast } from "@/components/ui/use-toast"
+import { createClientComponentClient } from "@supabase/auth-helpers-nextjs"
 import { useRouter } from "next/navigation"
+import React from "react"
 
 const profileFormSchema = z.object({
   username: z
@@ -62,6 +64,8 @@ const defaultValues: Partial<ProfileFormValues> = {
 }
 
 export function ProfileForm({user}: any) {
+  const supabase = createClientComponentClient()
+  const [sentEmail, setEmailSent] = React.useState(false)
   const router = useRouter();
   console.log(user)
   // console.log(session)
@@ -88,9 +92,28 @@ export function ProfileForm({user}: any) {
     })
   }
 
+  async function handlePasswordReset() {
+    // console.log("IN handle sign in")
+    // event.preventDefault()
+    const {data, error: resetError} = await supabase.auth.resetPasswordForEmail(
+        user.email,
+        {
+            redirectTo: `${process.env.CLIENT_URL}/api/auth/password-callback`
+        })   
+    if (resetError) {
+      // setError(resetError?.message)          
+      console.log(resetError)
+        return;
+    }
+    if (data) {
+        console.log(data)
+        setEmailSent(true)
+    }
+}
+
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">        
+      <form onSubmit={form.handleSubmit(handlePasswordReset)} className="space-y-8">        
         <FormField
           control={form.control}
           name="email"
@@ -110,7 +133,7 @@ export function ProfileForm({user}: any) {
             variant="outline"
             size="sm"
             className="mt-2"
-            onClick={() => append({ value: "" })}
+            onClick={handlePasswordReset}
           >
             Send password reset email
           </Button>

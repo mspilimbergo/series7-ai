@@ -5,6 +5,7 @@ import CTA from "@/components/ui/cta";
 import Hero from "@/components/ui/hero";
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
+import Image from "next/image";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 
@@ -14,9 +15,10 @@ function HomeNavBar() {
       <div className={"flex items-center justify-between h-full gap-2 md:px-0 mx-auto md:max-w-[1480px]"}> 
         {/* Logo */}
         <Link href={"/"} className="flex items-center gap-2">
-            <p className="rounded-lg border-2 border-b-4 border-r-4 border-black px-2 py-1 text-xl font-bold transition-all hover:-translate-y-[2px] md:block dark:border-white">
+            <Image src={"/Logo.svg"} width={160} height={160} alt="loading" />
+            {/* <p className="rounded-lg border-2 border-b-4 border-r-4 border-black px-2 py-1 text-xl font-bold transition-all hover:-translate-y-[2px] md:block dark:border-white">
             Series 7 Practice
-          </p>          
+          </p>           */}
           
         </Link>
         <div className="flex items-center">          
@@ -50,20 +52,6 @@ export default async function Home() {
       <Categories />
       {/* <Feedback /> */}
       <CTA />
-
-{/*       
-      <Card className="w-[300px]">
-        <CardHeader>
-          <CardTitle>Welcome to Quizmify 🔥!</CardTitle>
-          <CardDescription>
-            Quizmify is a platform for creating quizzes using AI!. Get started
-            by loggin in below!
-          </CardDescription>
-        </CardHeader>
-        <CardContent>
-          <SignInButton text="Sign In with Google" />
-        </CardContent>
-      </Card> */}
     </div>
   );
 }
