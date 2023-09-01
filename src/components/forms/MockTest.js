@@ -72,7 +72,9 @@ const MockTest = () => {
     // const queryString = JSON.stringify(paramData)
     const examType = "mock-test"
     // router.push(`/play/mcq/${isMockTest}&${numberOfQuestions}&${topicsSelected}`);
-    router.push(`/play/mcq/${examType}&10&`);
+    // router.push(`/play/mcq/${examType}&10&`);
+    // router.push(`/play/mcq/&type=${examType}`);
+    router.push(`/play/mcq/${examType}`);
     // `/play/mcq/${queryString}`
     // const res = await a//xios.post("/api/questions", { numberOfQuestions, topicsSelected });
     // console.log(res.data);s

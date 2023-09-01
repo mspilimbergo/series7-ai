@@ -93,7 +93,7 @@ export default function PasswordReset() {
                       <CardHeader>
                           <h1 className="text-2xl font-semibold tracking-tight">Password Successfully Reset!</h1>
                           <CardDescription>You can now continue to the Series 7 AI Dashboard!</CardDescription>
-                          <Button className="w-full" onClick={() => router.push('/dashboard')}>Login</Button>
+                          <Button className="w-full" onClick={() => router.push('/dashboard')}>Go To Dashboard</Button>
                       </CardHeader>
                   </>
                   ): (

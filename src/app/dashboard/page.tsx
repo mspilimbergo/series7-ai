@@ -20,8 +20,8 @@ export const metadata = {
 const Dasboard = async (props: Props) => {
   const supabase = createServerComponentClient({cookies});
   const { data: {session}} = await supabase.auth.getSession();
-  console.log("in session");
-  console.log(session);
+  // console.log("in session");
+  // console.log(session);
   // const session = await getAuthSession();
   if (!session) {
     redirect("/");

@@ -36,10 +36,10 @@ export default function PasswordReset() {
             {
                 redirectTo: `${window.location.origin}/api/auth/password-callback`
             }
-            )   
+            )        
         if (resetError) {
           setError(resetError?.message)          
-          console.log(resetError)
+          console.log("Error resetting password", resetError)
             return;
         }
         if (data) {

@@ -45,6 +45,7 @@ import { useToast } from "./ui/use-toast";
 // Use that as context for the rest of the code
 
 const MCQ = ({ game, isMockTest }) => {
+
   // console.log("GAME", game)
   const router = useRouter();
   const [isShowingStats, setIsShowingStats] = React.useState(false);
@@ -57,7 +58,7 @@ const MCQ = ({ game, isMockTest }) => {
     correct_answers: 0,
     wrong_answers: 0,
   });
-  const [selectedChoice, setSelectedChoice] = React.useState(0);
+  const [selectedChoice, setSelectedChoice] = React.useState(-1);
   const [now, setNow] = React.useState(new Date());
   // const tempOptions = JSON.parse(game[questionIndex].options);
   // console.log("tempOptions", tempOptions)
@@ -86,16 +87,18 @@ const MCQ = ({ game, isMockTest }) => {
     if (!currentQuestion) return [];
     if (!currentQuestion.options) return [];
     // return JSON.parse(currentQuestion.options as string) as string[];
-    return currentQuestion.options_arr;
+    return currentQuestion.options;
   }, [currentQuestion]);
 
   const { toast } = useToast();
   // Check if the answer the user selectedd matches the current question's answer
   // Then return a boolean value
   const checkAnswer = () => {
+
     setIsChecking(true);
     // const isCorrect = currentQuestion.answer.toLowerCase().trim() === selectedChoice.toLowerCase().trim();
-    let selectedChoiceString = options[selectedChoice].toLowerCase().trim();
+    let formattedChoiceString = options[selectedChoice].toString()
+    let selectedChoiceString = formattedChoiceString.toLowerCase().trim();
     // selectedChoiceString = selectedChoiceString.toLoswerCase().trim();
     // console.log(selectedChoiceString)
     const isCorrect = game[questionIndex].answer.toLowerCase().trim() === selectedChoiceString;
@@ -158,47 +161,60 @@ const MCQ = ({ game, isMockTest }) => {
   }
 
   const handleNext = React.useCallback(() => {
-    // if (hasEnded) {
-    //   console.log("CLICKED BUTTON")
-    //   setHasEnded(false);
-    //   setIsShowingStats(true);
-    //   return;
-    // }
-    const isCorrect = checkAnswer();
-    setIsChecking(false);
-    if (isCorrect) {
-      setStats((stats) => ({
-        ...stats,
-        correct_answers: stats.correct_answers + 1,
-      }));
-    } else {
-      setStats((stats) => ({
-        ...stats,
-        wrong_answers: stats.wrong_answers + 1,
-      }));
+    if (selectedChoice === -1)  {
+      if (questionIndex === game.length - 1) {
+        endGame();
+        setIsShowingStats(true)
+        // setHasEnded(true);
+        // console.log("answeredQuestions", answeredQuestions)
+        return;
+      }
+      setQuestionIndex((questionIndex) => questionIndex + 1);
+      if (showAnswer) {
+        setShowAnswer(false);
+      }
     }
-    const answeredQuestion = {
-      question: game[questionIndex].question,
-      answer: game[questionIndex].answer,
-      userAnswer: options[selectedChoice].toLowerCase().trim(),
-      isCorrect: isCorrect,
-      options: options,
-      explanation: game[questionIndex].explanation,
-      id: game[questionIndex].id,
+    else {
+      const isCorrect = checkAnswer();
+      setIsChecking(false);
+      if (isCorrect) {
+        setStats((stats) => ({
+          ...stats,
+          correct_answers: stats.correct_answers + 1,
+        }));
+      } else {
+        setStats((stats) => ({
+          ...stats,
+          wrong_answers: stats.wrong_answers + 1,
+        }));
+      }
+      const answeredQuestion = {
+        question: game[questionIndex].question,
+        answer: game[questionIndex].answer,
+        userAnswer: options[selectedChoice].toLowerCase().trim(),
+        isCorrect: isCorrect,
+        options: options,
+        explanation: game[questionIndex].explanation,
+        id: game[questionIndex].id,
+        upvotes: game[questionIndex].upvotes,
+        downvotes: game[questionIndex].downvotes,
+        feedback: game[questionIndex].feedback
+      }
+      setAnsweredQuestions((answeredQuestions) => [...answeredQuestions, answeredQuestion]);
+      if (questionIndex === game.length - 1) {
+        endGame();
+        setIsShowingStats(true)
+        // setHasEnded(true);
+        // console.log("answeredQuestions", answeredQuestions)
+        return;
+      }
+      setQuestionIndex((questionIndex) => questionIndex + 1);
+      if (showAnswer) {
+        setShowAnswer(false);
+      }
+      setSelectedChoice(-1);
     }
-    setAnsweredQuestions((answeredQuestions) => [...answeredQuestions, answeredQuestion]);
-    if (questionIndex === game.length - 1) {
-      endGame();
-      setIsShowingStats(true)
-      // setHasEnded(true);
-      // console.log("answeredQuestions", answeredQuestions)
-      return;
-    }
-    setQuestionIndex((questionIndex) => questionIndex + 1);
-    if (showAnswer) {
-      setShowAnswer(false);
-    }
-    setSelectedChoice(0);
+  
     // checkAnswer(undefined, {
     //   onSuccess: ({ isCorrect }) => {
     // if (isCorrect) {
@@ -304,7 +320,7 @@ const MCQ = ({ game, isMockTest }) => {
           <div className="flex items-center justify-between space-y-2 mb-4 mt-8">
             <span className="font-bold text-xl text-green-600"style={{color: "#4CA054"}}>
               Your Results
-              <div class="flex-grow h-4" style={{ borderBottom: "3px solid #4CA054", width: "50%" }}></div>
+              <div className="flex-grow h-4" style={{ borderBottom: "3px solid #4CA054", width: "50%" }}></div>
             </span>
             {/* <h2 className="text-3xl font-bold tracking-tight">Summary</h2> */}
             <div className="flex items-center space-x-2"style={{color: "#4CA054"}}>
@@ -316,8 +332,8 @@ const MCQ = ({ game, isMockTest }) => {
           </div>
 
           
-          <div class="flex flex-col md:flex-row">
-          <div class="w-full md:w-1/2 p-4">
+          <div className="flex flex-col md:flex-row">
+          <div className="w-full md:w-1/2 p-4">
             <AccuracyCard accuracy={tempAccuracy} />
           </div>
           <div class="w-full md:w-1/2 p-4">
@@ -343,8 +359,14 @@ const MCQ = ({ game, isMockTest }) => {
     return (
       <div className="absolute -translate-x-1/2 -translate-y-1/2 md:w-[80vw] max-w-4xl w-[90vw] top-1/2 left-1/2" >
         <div className="flex flex-row justify-between mb-8">
-          <span className="text-slate-400">
-            <IoChevronBackCircleOutline size={27} />
+          <span className="text-slate-400 cursor-pointer">
+            <IoChevronBackCircleOutline onClick={() => {
+              if (isMockTest) {
+                router.push('/quiz')
+              } else {
+                router.push('/tutor')
+              }
+              }} size={27} />
           </span>
           <span>
             {!isMockTest ? (

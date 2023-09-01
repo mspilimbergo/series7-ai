@@ -27,8 +27,6 @@ const DashboardNavBar = () => {
 
   async function getAuthSession() {
       const {data: {session}} = await supabase.auth.getSession();
-      console.log(session);
-      console.log("session changed")
       sessionStorage.setItem('session', JSON.stringify(session));
       setSession(session);
   }

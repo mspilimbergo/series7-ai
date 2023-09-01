@@ -1,5 +1,13 @@
 "use client";
 
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
 import {
   Table,
   TableBody,
@@ -9,59 +17,174 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import FeedbackButtons from "./FeedbackButtons";
+import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
+import { useEffect, useState } from "react";
+import { BsHandThumbsDown, BsHandThumbsDownFill, BsHandThumbsUp, BsHandThumbsUpFill } from "react-icons/bs";
+
+const FeedbackButtons = ({handleFeedback, submitPositiveFeedback, submitNegativeFeedback, id}) => {
+  const [positiveFeedback, setPositiveFeedback] = useState(false)
+  const [isClicked, setIsClicked] = useState(false)
+  const handlePositiveFeedback = () => {
+    if (isClicked) {
+      setIsClicked(false)
+      setPositiveFeedback(false)
+      submitPositiveFeedback(id, "decrement")
+    } else {
+      setIsClicked(true)
+      setPositiveFeedback(true)
+      submitPositiveFeedback(id, "increment")
+    }
+    
+  }
+  
+  return (
+    <div className="flex flex-row gap-2 mt-2">
+      <FeedbackPopover feedbackFunction={handleFeedback} submitHandler={submitNegativeFeedback} id={id} />      
+      <Button type="button" onClick={() => handlePositiveFeedback(id)} variant={'shadow'} size={'icon'}>
+        {positiveFeedback  ?
+          (<>
+          <BsHandThumbsUpFill color={'green'} />
+          </>
+          ): 
+          (
+            <>
+            <BsHandThumbsUp />  
+            </>
+          )}
+        </Button>
+    </div>   
+  )
+}
 
 const ResultsList = ({ questions }) => {
-  // const supabase = createClientComponentClient();
-  // const [feedback, setFeedback] = useState("");
-  // const [feedbackType, setFeedbackType] = useState("");
+  const supabase = createClientComponentClient();
+  // console.log("data", data)
+  // console.log("session", session)
+  // const {user} = supabase.auth.getUser();
+  // console.log("user", user)
+  const [feedback, setFeedback] = useState("");
+  const [feedbackType, setFeedbackType] = useState("");
+  const [user, setUser] = useState(null);
+  // console.log("user", user)
 
-  // function handleFeedback (e) {
-  //   setFeedback(e.target.value);
-  // }
+  function handleFeedback (e) {
+    setFeedback(e.target.value);
+  }
 
-  // async function submitPositiveFeedback (id) {
-  //   setFeedbackType("positive")
-  //   const feedbackObj = {
-  //     type: "positive",
-  //   }
-  //   const { data, error } = await supabase
-  //   .from('questions')
-  //   .update({ 
-  //     feedback: feedbackObj,      
-  //    })    
-  //   .eq('id', id )
-  //   .select() 
+  async function getUser() {
+    const {data, error} = await supabase.auth.getSession();
+    if (data) {
+      setUser(data.session?.user)      
+    }
+  }
 
-  //   if(error) {
-  //     console.log("Error uploading feedback", error)
-  //   }
-  //   // console.log("data", data)
+  useEffect(() => {
+    getUser()
+  },[])
 
-  // }
+  async function submitPositiveFeedback (id, changeType) {
+    console.log(changeType)
+    // return;
+    console.log(id)
+    setFeedbackType("positive")
+    console.log("In submit positive feedback")
+    const {data: currentData, error: currentDataError} = await supabase    
+      .from('questions_versioned')
+      .select('*')
+      .eq('id', id)
+      .single()
+      // console.log("data", data)
+      // return;
+      const currentUpvotes = currentData.upvotes;
+      // console.log(currentUpvotes)
+    if (changeType === "increment") {
+      console.log("in increment")
+      // Increment upvotes
+      const newUpvotes = currentUpvotes + 1;
 
-  // async function submitNegativeFeedback (id) {
-  //   const feedbackObj = {
-  //     type: "negative",
-  //     feedback: feedback
-  //   }
-  //   const feedbackString = JSON.stringify(feedbackObj)
-  //   // console.log("id", id)
-  //   const { data, error } = await supabase
-  //   .from('questions')
-  //   .update({ 
-  //     feedback: feedbackObj,
-  //     feedback_string: feedbackString 
-  //    })    
-  //   .eq('id', id )
-  //   .select() 
+      const { data: updatedData, error: updatedError } = await supabase
+      .from('questions_versioned')
+      .update({
+        upvotes: newUpvotes
+      })
+      .eq('id', id)
+      .select()
 
-  //   if(error) {
-  //     console.log("Error uploading feedback", error)
-  //   }
-  //   setFeedbackType("negative")
-  //   setFeedback("")
-  // }
+      if (updatedError) {
+        console.log("Error updating upvotes", updatedError)
+      } else {
+        console.log("updated data", updatedData)
+      }
+
+    } else {
+      // Decrement upvotes 
+      let newUpvotes;
+      if (currentUpvotes - 1 <= 0) {
+        newUpvotes = 0;
+      }
+      else {
+        newUpvotes = currentUpvotes - 1;
+      }
+      const { data: updatedData, error: updatedError } = await supabase
+      .from('questions_versioned')
+      .update({
+        upvotes: newUpvotes
+      })
+      .eq('id', id)
+      .select()
+
+      if (updatedData) {
+        console.log("updated data", updatedData)
+      }
+    }    
+  }
+
+  async function submitNegativeFeedback (id) {
+    // const feedbackObj = {
+    //   type: "negative",
+    //   feedback: feedback
+    // }
+    // const feedbackString = JSON.stringify(feedbackObj)
+    const {data: currentData, error: currentDataError} = await supabase    
+      .from('questions_versioned')
+      .select('*')
+      .eq('id', id)
+      .single()
+    const currentDownvotes = currentData.downvotes;
+    let newDownvotes = currentDownvotes + 1;
+    // if (currentDownvotes - 1 <= 0) {
+    //   newDownvotes = 0;
+    // } else {
+    //   newDownvotes = currentDownvotes - 1;
+    // }
+
+    // Update downvotes count in questions_versioned table
+    const { data: updatedData, error: updatedError } = await supabase
+    .from('questions_versioned')
+    .update({
+      downvotes: newDownvotes
+    })
+    .eq('id', id)
+    .select()
+    
+    // Create feedback in feedback table
+    const { data, error } = await supabase
+    .from('feedback')
+    .insert([
+      {
+        question_id: id,
+        feedback_message: feedback, 
+        user_id: user.id
+      }
+    ])
+    .select() 
+
+    if(error) {
+      console.log("Error uploading feedback", error)
+    }
+    setFeedbackType("negative")
+    setFeedback("")
+  }
 
   // useEffect(() => {
   //   console.log("feedback", feedback)
@@ -86,7 +209,7 @@ const ResultsList = ({ questions }) => {
               index
             ) => {
               return (
-                <TableRow key={index}>
+                <TableRow key={id}>
                   <TableCell className="font-medium">{index + 1}</TableCell>
                   <TableCell>
                     {question}                     
@@ -103,10 +226,9 @@ const ResultsList = ({ questions }) => {
                     </TableCell>
                     <TableCell>
                       {explanation}
-                      <FeedbackButtons id={id} />
-                      {/* <div className="flex flex-row gap-2 mt-2">
-                        <FeedbackPopover feedbackFunction={handleFeedback} submitHandler={submitNegativeFeedback} id={id} feedbackType={feedbackType} />                      
-                        
+                      <div className="flex flex-row gap-2 mt-2">
+                        <FeedbackButtons handleFeedback={handleFeedback} submitPositiveFeedback={submitPositiveFeedback} submitNegativeFeedback={submitNegativeFeedback} id={id} />
+                        {/* <FeedbackPopover feedbackFunction={handleFeedback} submitHandler={submitNegativeFeedback} id={id} feedbackType={feedbackType} />                
                       <Button type="button" onClick={() => submitPositiveFeedback(id)} variant={'shadow'} size={'icon'}>
                         {feedbackType === "positive" ?
                         (<>
@@ -117,8 +239,8 @@ const ResultsList = ({ questions }) => {
                           <BsHandThumbsUp />  
                           </>
                         )}
-                        </Button>
-                      </div>                   */}
+                        </Button> */}
+                      </div>                  
                     </TableCell>                                    
                     {/* <TableCell>
                       <div className="flex flex-row gap-2">
@@ -142,67 +264,66 @@ const ResultsList = ({ questions }) => {
 
 export default ResultsList;
 
-// export function FeedbackButtons() {
-//   return (
-//     <div className="flex flex-row gap-2 mt-2">
-//       <FeedbackPopover feedbackFunction={handleFeedback} submitHandler={submitNegativeFeedback} id={id} feedbackType={feedbackType} />      
-//       <Button type="button" onClick={() => submitPositiveFeedback(id)} variant={'shadow'} size={'icon'}>
-//         {feedbackType === "positive" ?
-//           (<>
-//           <BsHandThumbsUpFill color={'green'} />
-//           </>
-//           ): 
-//           (
-//             <>
-//             <BsHandThumbsUp />  
-//             </>
-//           )}
-//         </Button>
-//     </div>   
-//   )
-// }
 
 
-// export function FeedbackPopover({feedbackFunction, submitHandler, id, feedbackType}) {
-//   const [open, setOpen] = useState(false)
+export function FeedbackPopover({feedbackFunction, submitHandler, id}) {
+  const [open, setOpen] = useState(false)
+  const [negativeFeedback, setNegativeFeedback] = useState(false)
+  const [isClicked, setIsClicked] = useState(false)
+  const handleNegativeFeedback = () => {
+    if (isClicked) {
+      setIsClicked(false)
+      setNegativeFeedback(false)
+      submitHandler(id, "decrement")
+      setOpen(false)
+    } else {
+      setIsClicked(true)
+      setNegativeFeedback(true)
+      submitHandler(id, "increment")
+      setOpen(true)
+    }
+    
+  }
 
-//   return (
-//     <Popover open={open} onOpenChange={setOpen}>
-//       <PopoverTrigger asChild>
-//       <Button  aria-expanded={open} variant={'shadow'} size={'icon'}>
-//         {feedbackType === "negative" ? 
-//         (
-//           <>
-//             <BsHandThumbsDownFill color={'red'} />
-//           </>
-//         ): 
-//         (
-//           <BsHandThumbsDown />
-//         )
-//         }
-//       </Button>
-//       </PopoverTrigger>
-//       <PopoverContent className="w-80">
-//         <div className="grid gap-4">         
-//               <Label htmlFor="width">Feedback</Label>
-//               <Input
-//                 id="feedback"
-//                 placeholder="Enter feedback here"
-//                 className="col-span-2 h-8"
-//                 onChange={(e) => feedbackFunction(e)}
-//               />
-//               {/* <Popover.Close> */}
-//                 <Button onClick={
-//                   () => {
-//                     submitHandler(id)
-//                     setOpen(false)
-//                   }
-//                 }>Submit</Button>
-//               {/* </Popover.Close> */}
-//         </div>
-//       </PopoverContent>
-//     </Popover>
-//   )
-// }
+  return (
+    <Popover open={open} onOpenChange={setOpen}>
+      <PopoverTrigger asChild>
+      <Button  aria-expanded={open} variant={'shadow'} size={'icon'}>
+        {negativeFeedback ? 
+        (
+          <>
+            <BsHandThumbsDownFill color={'red'} />
+          </>
+        ): 
+        (
+          <BsHandThumbsDown />
+        )
+        }
+      </Button>
+      </PopoverTrigger>
+      <PopoverContent className="w-80">
+        <div className="grid gap-4">         
+              <Label htmlFor="width">Feedback</Label>
+              <Input
+                id="feedback"
+                placeholder="Enter feedback here"
+                className="col-span-2 h-8"
+                onChange={(e) => feedbackFunction(e)}
+              />
+              {/* <Popover.Close> */}
+                <Button onClick={
+                  () => {
+                    // handleNegativeFeedback()
+                    setNegativeFeedback(true)
+                    submitHandler(id, "decrement")
+                    setOpen(false)
+                  }
+                }>Submit</Button>
+              {/* </Popover.Close> */}
+        </div>
+      </PopoverContent>
+    </Popover>
+  )
+}
 
 

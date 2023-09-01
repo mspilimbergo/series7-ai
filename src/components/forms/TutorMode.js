@@ -127,20 +127,23 @@ const TutorMode = () => {
           {/* <CardTitle className="text-2xl font-bold">Tutor Mode Creation</CardTitle>
           <CardDescription>Choose a topic</CardDescription> */}
           <form onSubmit={handleSubmit}> 
-          <div className="flex flew-row gap-4 bg-slate-600 w-full">
-            <div className="flex flex-col flex-1">
+          {/* <div className="flex flew-row gap-4 bg-slate-600 w-[800px]"> */}
+          <div className="grid grid-cols-2 gap-4 grid-flow-row">
+            {/* <div className="flex flex-col flex-none grow-0 basis-1/2"> */}
+            <div>
                   <label>Topic</label>
                   <MultiSelect
                     options={topics}
                     value={topicsSelected}
                     onChange={(selectedOptions) => setTopicsSelected(selectedOptions)}
                     labelledBy="Select"
-                    isCreatable={true}
+                    isCreatable={false}
                     className="mt-4"
                   />
                   <p className="text-sm text-slate-400 mt-4">Please provide any topic you would like to be quizzed on here.</p>
               </div>
-            <div className="flex flex-col flex-1 bg-blue-300">
+            {/* <div className="flex flex-col flex-none basis-1/2"> */}
+            <div>
                 <label>Number of Questions</label>
                 <Input
                   type="number"

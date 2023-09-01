@@ -11,12 +11,14 @@ import {
 } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
+import { useToast } from "@/components/ui/use-toast"
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs"
 import Link from "next/link"
 import { useRouter } from 'next/navigation'
 import { useEffect, useState } from "react"
 
 export default function SignIn() {
+    const {toast} = useToast()
     const router = useRouter();
     const supabase = createClientComponentClient()    
     const [error, setError] = useState()
@@ -48,6 +50,22 @@ export default function SignIn() {
     async function handleSignIn(event) {
         console.log("IN handle sign in")
         event.preventDefault()
+        const {data: userData, error: userDataError} = await supabase
+        .from('users')
+        .select('*')
+        .eq('email', formData.email)
+        .single()
+
+        if (userData._is_active === false || userData.status !== "active") {
+          setError("Your account is currently inactive. To reactive your account, click Create New Account above.")
+          return;
+        }
+
+        if (userDataError) {
+          setError(userDataError?.message)
+          return;
+        }
+
         const {data, error: signInError} = await supabase.auth.signInWithPassword({
             email: formData.email,
             password: formData.password,
@@ -63,6 +81,11 @@ export default function SignIn() {
         }
         if (data) {
             console.log(data)
+            toast({
+              variant: "success",
+              title: "Welcome Back!",
+              description: "You will now be redirected to your dashboard!",
+            })
             router.push('/dashboard');
         }
         
@@ -87,7 +110,7 @@ export default function SignIn() {
       <div className="absolute -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
          {/* <div className={cn("grid gap-6", className)} {...props}> */}
          {error && (
-          <Alert variant="destructive" className="mb-4">
+          <Alert variant="destructive" className="mb-4 w-[400px]">
             <AlertTitle>Sign In Error</AlertTitle>
             <AlertDescription>
               {error}

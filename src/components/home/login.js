@@ -2,6 +2,11 @@
 
 import * as React from "react"
 
+/*
+  fetch user
+  use bcrypt.compare to compare password (data password)
+  bcrypt.compare(password, data.password)
+*/
 
 // interface UserAuthFormProps extends React.HTMLAttributes<HTMLDivElement> {}
 

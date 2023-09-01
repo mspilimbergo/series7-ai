@@ -17,10 +17,11 @@ const MCQPage = async ({ params: {questions}, searchParams: {topics, type} }) =>
   if (!session) {
     return redirect("/");
   }
+  
 
   let isMockTest = false;
   
-  if (type === "mock-test")  {
+  if (questions === "mock-test")  {
     isMockTest = true;
   }
   
@@ -147,6 +148,8 @@ const MCQPage = async ({ params: {questions}, searchParams: {topics, type} }) =>
         return data;
       })
     );
+
+    console.log(results)
 
     // Flatten the results array to get a single list of questions
     const tutorQuestions = results.flat();

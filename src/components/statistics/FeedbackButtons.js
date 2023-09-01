@@ -12,6 +12,16 @@ import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import { useEffect, useState } from "react";
 import { BsHandThumbsDown, BsHandThumbsDownFill, BsHandThumbsUp, BsHandThumbsUpFill } from "react-icons/bs";
 
+/*
+[
+    {
+        user_id: "1234",
+        negative_feedback: "This is a negative feedback",
+    }
+]
+
+*/
+
 function FeedbackButtons({id}) {
     // console.log("ID PARAM", id)
     const [feedback, setFeedback] = useState();
