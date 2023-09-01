@@ -5,11 +5,6 @@ import { NextResponse } from 'next/server';
 export const dynamic = 'force-dynamic'
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
-export const config = {
-    api: {
-      bodyParser: false,
-    },
-  };
 export async function POST(request) {
     const supabase = createRouteHandlerClient({ cookies })
     const headersList = headers()
