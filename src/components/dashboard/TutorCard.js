@@ -12,7 +12,7 @@ const TutorCard = (props) => {
     <Card
       className="flex flex-col justify-between hover:cursor-pointer hover:opacity-75 md:w-[522px] md:h-[591px] md:p-10 drop-shadow-xl"
       onClick={() => {
-        router.push("/tutor");
+        location.href = '/tutor'
       }}
     >    
       <CardContent className="pb-0">
