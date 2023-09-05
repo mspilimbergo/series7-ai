@@ -98,15 +98,20 @@ export function ProfileForm({user}: any) {
     const {data, error: resetError} = await supabase.auth.resetPasswordForEmail(
         user.email,
         {
-            redirectTo: `${process.env.CLIENT_URL}/api/auth/password-callback`
-        })   
+          redirectTo: `${window.location.origin}/api/auth/password-callback`
+        })           
     if (resetError) {
       // setError(resetError?.message)          
       console.log(resetError)
         return;
     }
     if (data) {
-        console.log(data)
+        // console.log(data)
+        toast({
+          variant: "success",
+          title: "Password Reset Sent!",
+          description: "Check your email to update your password!",
+        })
         setEmailSent(true)
     }
 }
