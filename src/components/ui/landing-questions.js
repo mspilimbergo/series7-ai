@@ -23,7 +23,7 @@ import { useEffect, useState } from 'react';
         setShowLoader(true)
         try {      
           let { data, error, status } = await supabase
-            .from('questions')
+            .from('questions_versioned')
             .select('*')
             .limit(3)
     
@@ -100,7 +100,7 @@ import { useEffect, useState } from 'react';
           </CardHeader>
         </Card>
         <div className="flex flex-col items-center justify-center w-full mt-4">
-          {questions[0].options_arr.map((option, index) => {
+          {questions[0].options.map((option, index) => {
             return (
               <Button
                 key={index}
@@ -141,7 +141,7 @@ import { useEffect, useState } from 'react';
           </CardHeader>
         </Card>
         <div className="flex flex-col items-center justify-center w-full mt-4">
-          {questions[1].options_arr.map((option, index) => {
+          {questions[1].options.map((option, index) => {
             return (
               <Button
                 key={index}
@@ -182,7 +182,7 @@ import { useEffect, useState } from 'react';
           </CardHeader>
         </Card>
         <div className="flex flex-col items-center justify-center w-full mt-4">
-          {questions[2].options_arr.map((option, index) => {
+          {questions[2].options.map((option, index) => {
             return (
               <Button
                 key={option}
