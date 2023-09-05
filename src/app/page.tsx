@@ -32,11 +32,17 @@ function HomeNavBar() {
   );
 }
  
-export default async function Home() {
+export default async function Home({
+  params,
+  searchParams,
+}: {
+  params: { slug: string }
+  searchParams: { [key: string]: string | string[] | undefined }
+}) {
   const supabase = createServerComponentClient({cookies});
   const { data: {session}} = await supabase.auth.getSession();
-  console.log("in session");
-  console.log(session);
+  console.log(searchParams)
+
   if (session) {
     redirect("/dashboard");
   }

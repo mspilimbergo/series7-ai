@@ -3,6 +3,7 @@
 import Link from "next/link";
 
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
+import Image from "next/image";
 import { useCallback, useEffect, useState } from "react";
 import CTAButton from "./ui/CTAButton";
 
@@ -52,16 +53,7 @@ const SignInNavbar = () => {
       <div className={"flex items-center justify-between h-full gap-2 md:px-0 mx-auto md:max-w-[1480px]"}> 
         {/* Logo */}
         <Link href={"/"} className="flex items-center gap-2">
-          {session ? (
-            <p className="rounded-lg border-2 border-b-4 border-r-4 border-black px-2 py-1 text-xl font-bold transition-all hover:-translate-y-[2px] md:block dark:border-white">
-            Series 7 Practice
-          </p>
-          ): (
-            <p className="rounded-lg border-2 border-b-4 border-r-4 border-black px-2 py-1 text-xl font-bold transition-all hover:-translate-y-[2px] md:block dark:border-white">
-              Series 7 Practice
-            </p>
-          )}
-          
+          <Image src={"/Logo.svg"} width={160} height={160} alt="loading" />
         </Link>
         <div className="flex items-center">
             <div className="flex flex-row gap-4">

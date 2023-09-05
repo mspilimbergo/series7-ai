@@ -26,7 +26,7 @@ const MCQPage = async ({ params: {questions}, searchParams: {topics, type} }) =>
   }
   
   if (isMockTest) {
-    console.log("============IN MOCK TEST===============")
+    // console.log("============IN MOCK TEST===============")
 
       // 11 questions from Open Accounts After Obtaining....
       // 91 from Provides Customer with Informatin About Investments
@@ -216,7 +216,7 @@ return <MCQ game={allQuestionsForFunction} isMockTest={true}/>;
   }
   else {
     // console.log("============IN MCQ===============")
-    console.log("============IN TUTOR MODE===============")
+    // console.log("============IN TUTOR MODE===============")
 
     // Turn the topics into an array
     const topicsArray = topics.split(',');
@@ -291,7 +291,7 @@ return <MCQ game={allQuestionsForFunction} isMockTest={true}/>;
       })
     );
 
-    console.log(results)
+    // console.log(results)
 
     // Flatten the results array to get a single list of questions
     const tutorQuestions = results.flat();

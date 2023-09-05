@@ -15,8 +15,11 @@ import { useRouter } from "next/navigation";
 import React, { useEffect } from "react";
 import { FaCheck, FaEye, FaRegClock, FaStepForward } from 'react-icons/fa';
 import { IoChevronBackCircleOutline } from 'react-icons/io5';
+import ReactPaginate from 'react-paginate';
 import { Button, buttonVariants } from "./ui/button";
 import { useToast } from "./ui/use-toast";
+
+import "./paginate.css";
 
 // The game prop will be a list of questions
 // Here is an example
@@ -148,6 +151,64 @@ const MCQ = ({ game, isMockTest }) => {
   const endGame = async () => {
     setTimeEnded(new Date());
   }
+
+  const handlePageClick = (event) => {
+
+    if (selectedChoice === -1)  {
+      if (questionIndex === game.length - 1) {
+        endGame();
+        setIsShowingStats(true)
+        // setHasEnded(true);
+        // console.log("answeredQuestions", answeredQuestions)
+        return;
+      }
+      setQuestionIndex(event.selected)
+      if (showAnswer) {
+        setShowAnswer(false);
+      }
+    }
+    else {
+      const isCorrect = checkAnswer();
+      setIsChecking(false);
+      if (isCorrect) {
+        setStats((stats) => ({
+          ...stats,
+          correct_answers: stats.correct_answers + 1,
+        }));
+      } else {
+        setStats((stats) => ({
+          ...stats,
+          wrong_answers: stats.wrong_answers + 1,
+        }));
+      }
+      const answeredQuestion = {
+        question: game[questionIndex].question,
+        answer: game[questionIndex].answer,
+        userAnswer: options[selectedChoice].toLowerCase().trim(),
+        isCorrect: isCorrect,
+        options: options,
+        explanation: game[questionIndex].explanation,
+        id: game[questionIndex].id,
+        upvotes: game[questionIndex].upvotes,
+        downvotes: game[questionIndex].downvotes,
+        feedback: game[questionIndex].feedback
+      }
+      setAnsweredQuestions((answeredQuestions) => [...answeredQuestions, answeredQuestion]);
+      if (questionIndex === game.length - 1) {
+        endGame();
+        setIsShowingStats(true)
+        // setHasEnded(true);
+        // console.log("answeredQuestions", answeredQuestions)
+        return;
+      }
+      setQuestionIndex(event.selected)
+
+      if (showAnswer) {
+        setShowAnswer(false);
+      }
+      setSelectedChoice(-1);
+    }
+  };
 
   const handleShowStats = () => {
     let totalCorrect = answeredQuestions.reduce((acc, question) => {
@@ -355,6 +416,8 @@ const MCQ = ({ game, isMockTest }) => {
     // THIS IS THE QUESTIONS SECTION (BELOW)
   */
 
+    
+
   else {
     return (
       <div className="absolute -translate-x-1/2 -translate-y-1/2 md:w-[80vw] max-w-4xl w-[90vw] top-1/2 left-1/2" >
@@ -513,6 +576,30 @@ const MCQ = ({ game, isMockTest }) => {
               {/* <ChevronRight className="w-4 h-4 ml-2" /> */}
             </Button>
           </div>
+   
+   <div className="w-full mt-4">
+   <ReactPaginate
+            breakLabel="..."
+            nextLabel=">"
+            onPageChange={handlePageClick}
+            pageRangeDisplayed={5}
+            pageCount={game.length}
+            previousLabel="<"
+            renderOnZeroPageCount={null}
+            breakClassName={'page-item'}
+            breakLinkClassName={'page-link'}
+            containerClassName={'pagination'}
+            pageClassName={'page-item'}
+            pageLinkClassName={'page-link'}
+            previousClassName={'page-item'}
+            previousLinkClassName={'page-link'}
+            nextClassName={'page-item'}
+            nextLinkClassName={'page-link'}
+            activeClassName={'active'}
+            forcePage={questionIndex}
+          />
+   </div>
+    
           {showAnswer && (
             <div>
               <Card className="w-full mt-4 rounded-sm">
