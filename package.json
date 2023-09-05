@@ -53,6 +53,7 @@
     "react-hook-form": "^7.45.2",
     "react-icons": "^4.10.1",
     "react-multi-select-component": "^4.3.4",
+    "react-paginate": "^8.2.0",
     "react-slick": "^0.29.0",
     "string-similarity": "^4.0.4",
     "stripe": "^12.18.0",
