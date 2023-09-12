@@ -177,6 +177,36 @@ export function ProfileForm({user}: any) {
           >
             Modify Subscription
           </Button>
+           {fields.map((field, index) => (
+            <FormField
+              control={form.control}
+              key={field.id}
+              name={`urls.${index}.value`}
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel className={cn(index !== 0 && "sr-only")}>
+                    Subscription
+                  </FormLabel>
+                  <FormDescription className={cn(index !== 0 && "sr-only")}>
+                    Cancel or change your subscription with the link below.
+                  </FormDescription>
+                  {/* <FormControl>
+                    <Input {...field} />
+                  </FormControl> */}
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          ))}
+          <Button
+            type="button"
+            variant="outline"
+            size="sm"
+            className="mt-2"
+            onClick={() => router.push('https://billing.stripe.com/p/login/test_bIY9BQ0zO3L67YY9AA')}
+          >
+            Modify Subscription
+          </Button>
         </div>
         <Button type="button" onClick={() => router.push('/dashboard')} >Return to Dashboard</Button>
       </form>
