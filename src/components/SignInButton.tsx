@@ -13,6 +13,7 @@ const SignInButton = ({ text }: Props) => {
   }
   return (
     <Button
+      className="text-xs md:text-base"
       variant={'outline'}
       // className={cta}
       onClick={handleSignIn}

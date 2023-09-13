@@ -17,6 +17,7 @@ const CTAButton = ({ text }) => {
   }
   return (
     <Button
+      className="text-xs md:text-base"
       variant={'default'}
       onClick={handleSignUp}
     >

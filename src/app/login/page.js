@@ -56,7 +56,9 @@ export default function SignIn() {
         .eq('email', formData.email)
         .single()
 
-        if (userData._is_active === false || userData.status !== "active") {
+        console.log(userData)
+
+        if (userData?.is_active === false || userData?.status !== "active") {
           setError("Your account is currently inactive. To reactive your account, click Create New Account above.")
           return;
         }

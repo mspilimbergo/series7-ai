@@ -34,45 +34,22 @@ export default function Hero() {
 
   return (
     <section className="relative">
-      <div className='w-full bg-white py-24'>
-        <div className='md:max-w-[1480px] m-auto grid md:grid-cols-2 max-w-[600px]  px-4 md:px-0'>
-            
-            <div className='flex flex-col justify-start gap-4'>
-                <p className='py-2 text-2xl text-[#20B486] font-medium'>SERIES 7 PRACTICE</p>
-                {/* Unlimited Practice Problems and Mock Tests to Pass the Series 7 */}
-                <h1 className='md:leading-[72px] py-2 md:text-6xl text-5xl font-semibold'>Unlimited <span className='text-[#20B486]'>Practice Problems </span> & 
-                <span className='text-[#20B486]'> Mock Tests </span>
-                    to Pass the <span  className='text-[#20B486]'>Series 7</span> 
+      <div className='w-full bg-white py-4 md:py-24'>
+        <div className='md:max-w-[1480px] m-auto grid md:grid-cols-2 max-w-[600px] px-4 md:px-0'>            
+            <div className='flex flex-col justify-center md:justify-start gap-4 md:gap-2 mb-4 md:mb-0'>
+                <p className='py-0 md:py-2 text-2xl text-[#20B486] text-center md:text-start font-medium'>SERIES 7 PRACTICE</p>
+                <h1 className='md:leading-[72px] text-center md:text-start py-2 md:text-6xl text-4xl font-semibold'>Unlimited <span className='text-[#20B486]'>Practice Problems </span> for the 
+                    FINRA <span  className='text-[#20B486]'>Series 7</span> 
                 </h1>
-                <p className='py-2 text-lg text-gray-600'>Set yourself up for success with an affordable subscription of $7 per month.</p>
-                <div className='max-w-[500px] align-bottom'>
-                    {/* <Button>Try a test!</Button> */}
-                    {/* <ScrollButton scrollAmount={700} /> */}
+                {/* <p className='text-md md:text-lg text-center md:text-start text-gray-600 md:leading-[72px]'>Set yourself up for success with an affordable subscription of $7 per month.</p> */}
+                <div className='flex self-center  md:self-start max-w-[500px] align-bottom '>
                     <Button
-                    // disabled={isLoading}
+                    className='md:text-md'
                     onClick={scrollToPosition}
                     >Try Practice Problems</Button>
-                </div>
-                {/* <form className='bg-white border max-w-[500px] p-4 input-box-shadow rounded-md flex justify-between'> */}
-                    {/* <Button className='max-w-[500px]'>Learn More</Button>
-                    <input 
-                        className='bg-white'
-                        type="text"
-                        placeholder='What do want to learn?'
-                    /> */}
-                    {/* <button> */}
-                        {/* <AiOutlineSearch 
-                            size={20}
-                            className="icon"
-                            style={{color:'#000'}}
-
-                        /> */}
-
-                    {/* </button> */}
-                {/* </form> */}
-            </div>
-                        
-            <Image loading={'eager'} src={'/hero-image-6.png'} width={800} height={800} className="md:order-last  order-first" alt='ai-questions-example' />
+                </div>              
+            </div>                        
+            <Image loading={'eager'} src={'/hero-image-6.png'} width={800} height={800} className="md:order-last order-last" alt='ai-questions-example' />
 
         </div>        
 
@@ -80,7 +57,7 @@ export default function Hero() {
     {/* {!isLoading && ( */}
         <div className='w-full bg-white md:pb-[70px]'>
             <div className='md:max-w-[1480px] m-auto max-w-[600px] px-4 md:px-0'>
-                <h1 className='text-center text-2xl font-bold text-[#536E96]'>Series 7 Practice offers AI-assisted practice problems, mock tests, and personalized tutoring.</h1>
+                <h1 className='text-center text-xl md:text-2xl font-bold text-[#536E96]'>Series 7 Practice offers AI-assisted practice problems, mock tests, and personalized tutoring.</h1>
                 {/* <p className='text-center  text-[#536E96] text-xl'>Leading companies use the same courses to help employees keep their skills fresh.</p> */}
             </div>
         </div>
