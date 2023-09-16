@@ -19,7 +19,7 @@ export default function RootLayout({children,}: {children: React.ReactNode;}) {
   // const router = useRouter();
   return (
     <html lang="en">
-      <body className={cn(inter.className, "antialiased min-h-screen pt-16")}>
+      <body className={cn(inter.className, "antialiased min-h-screen")}>
         <Providers>
           {/* <Navbar  /> */}
           {children}
