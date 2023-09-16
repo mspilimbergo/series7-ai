@@ -34,7 +34,7 @@ export default function Hero() {
 
   return (
     <section className="relative">
-      <div className='w-full bg-white py-4 md:py-24'>
+      <div className='w-full bg-white py-4 md:py-24 md:px-20'>
         <div className='md:max-w-[1480px] m-auto grid md:grid-cols-2 max-w-[600px] px-4 md:px-0'>            
             <div className='flex flex-col justify-center md:justify-start gap-4 md:gap-2 mb-4 md:mb-0'>
                 <p className='py-0 md:py-2 text-2xl text-[#20B486] text-center md:text-start font-medium'>SERIES 7 PRACTICE</p>
@@ -56,7 +56,7 @@ export default function Hero() {
     </div>
     {/* {!isLoading && ( */}
         <div className='w-full bg-white md:pb-[70px]'>
-            <div className='md:max-w-[1480px] m-auto max-w-[600px] px-4 md:px-0'>
+            <div className='md:max-w-[1480px] m-auto max-w-[600px] px-4 md:px-20'>
                 <h1 className='text-center text-xl md:text-2xl font-bold text-[#536E96]'>Series 7 Practice offers AI-assisted practice problems, mock tests, and personalized tutoring.</h1>
                 {/* <p className='text-center  text-[#536E96] text-xl'>Leading companies use the same courses to help employees keep their skills fresh.</p> */}
             </div>

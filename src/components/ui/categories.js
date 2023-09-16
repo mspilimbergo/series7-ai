@@ -1,4 +1,4 @@
-import AccordionItem from '../AccordionItem'
+import AccordionItem from '../AccordionItem';
 
 const topics = [
   {
@@ -54,7 +54,7 @@ const topics = [
 const Categories = () => {
   return (
     <div className='w-full bg-[#F0FBF7] py-24'>
-        <div className='md:max-w-[1480px] m-auto max-w-[600px]  px-4 md:px-0'>
+        <div className='md:max-w-[1480px] m-auto max-w-[600px]  px-4 md:px-20'>
                 <h1 className='md:leading-[72px] text-3xl font-bold'>Series 7 <span className='text-[#20B486]'>Subjects</span></h1>
                 {/* <p className='text-lg text-gray-600 mb-4'>Various versions have evolved over the years, sometimes by accident.</p> */}
                 

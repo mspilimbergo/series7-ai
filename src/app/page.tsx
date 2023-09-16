@@ -11,7 +11,7 @@ import { redirect } from "next/navigation";
 
 function HomeNavBar() {
   return (
-    <div className="fixed inset-x-0 top-0 bg-white dark:bg-gray-950 z-[10] h-fit border-b border-zinc-300 p-1 ">
+    <nav className="fixed inset-x-0 top-0 bg-white dark:bg-gray-950 z-[50] h-fit border-b border-zinc-300 p-1 md:px-20 ">
       <div className={"flex items-center justify-between h-full gap-2 md:px-0 mx-auto md:max-w-[1480px]"}> 
         {/* Logo */}
         <Link href={"/"} className="flex items-center gap-2">
@@ -28,7 +28,7 @@ function HomeNavBar() {
             </div>        
         </div>
       </div>
-    </div>
+    </nav>
   );
 }
  
@@ -42,9 +42,7 @@ export default async function Home() {
   }
   return (
     <div>
-      <HomeNavBar />
-    {/* // <div className="absolute -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"> */}
-        
+      <HomeNavBar />        
       <Hero />
       {/* <TrustBadge /> */}
       {/* <ProductOfferrings /> */}

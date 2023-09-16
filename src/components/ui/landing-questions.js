@@ -55,7 +55,8 @@ import CTAButton from "./CTAButton";
         try {      
           let { data, error, status } = await supabase
             .from('questions_versioned')
-            .select('*')
+            .select('*')            
+            .eq('topic', 'Equity Securities')
             .limit(3)
     
           if (error && status !== 406) {
