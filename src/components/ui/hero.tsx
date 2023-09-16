@@ -56,7 +56,7 @@ export default function Hero() {
     </div>
     {/* {!isLoading && ( */}
         <div className='w-full bg-white md:pb-[70px]'>
-            <div className='md:max-w-[1480px] m-auto max-w-[600px] px-2 md:px-20'>
+            <div className='md:max-w-[1480px] m-auto max-w-[600px] px-6 md:px-20'>
                 <h1 className='text-center text-lg md:text-2xl font-bold text-[#536E96]'>Series 7 Practice offers AI-assisted practice problems, mock tests, and personalized tutoring.</h1>
             </div>
         </div>
