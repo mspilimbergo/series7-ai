@@ -12,7 +12,7 @@ import { redirect } from "next/navigation";
 function HomeNavBar() {
   return (  
     <header>
-    <nav className="flex fixed inset-x-0 top-0 bg-white dark:bg-gray-950 z-[50] h-fit border-b border-zinc-300 p-1 md:px-20 ">
+    <nav className="fixed inset-x-0 md:top-0 bg-white dark:bg-gray-950 z-[50] h-fit border-b border-zinc-300 p-1 md:px-20 ">
       <div className={"flex items-center justify-between h-full gap-2 md:px-0 mx-auto md:max-w-[1480px]"}> 
         {/* Logo */}
         <Link href={"/"} className="flex items-center gap-2">
