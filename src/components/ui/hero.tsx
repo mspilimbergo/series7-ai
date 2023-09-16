@@ -34,7 +34,7 @@ export default function Hero() {
 
   return (
     <section className="relative">
-      <div className='w-full bg-white py-14 md:py-24 md:px-20'>
+      <div className='w-full bg-white py-8 md:py-24 md:px-20'>
         <div className='md:max-w-[1480px] m-auto grid md:grid-cols-2 max-w-[600px] px-4 md:px-0'>            
             <div className='flex flex-col justify-center md:justify-start gap-4 md:gap-2 mb-4 md:mb-0'>
                 <p className='py-0 md:py-2 text-lg md:text-2xl  text-[#20B486] text-center md:text-start font-medium'>SERIES 7   PRACTICE</p>
