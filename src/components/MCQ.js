@@ -476,12 +476,12 @@ const MCQ = ({ game, isMockTest }) => {
             </span>
           </div> */}
         </div>
-        <div className="w-full  mt-8 border px-2 py-4 rounded-sm mb-8">
+        <div className="w-full  mt-4 md:mt-8 border px-2 py-4 rounded-sm mb-8">
           <div className="flex  flex-row items-center">
 
             <div className="mr-5  text-center divide-y divide-zinc-600/50">
 
-              <div className="p-6 px-4 mr-2 border  bg-gray-500 md:text-xl text-md text-white" style={{ backgroundColor: "#373737",borderRadius: "5px" }}>0{questionIndex + 1}</div>
+              <div className="p-2 md:p-6 md:px-4 mr-2 border  bg-gray-500 md:text-xl text-sm text-white" style={{ backgroundColor: "#373737",borderRadius: "5px" }}>0{questionIndex + 1}</div>
               {/* <div className="text-base text-slate-400">
                 {game.length}
               </div> */}
@@ -491,7 +491,7 @@ const MCQ = ({ game, isMockTest }) => {
             </CardDescription>
           </div>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8">
+        <div className="grid grid-cols-1 mb-4 md:grid-cols-2 gap-4 mt-4 md:mt-8">
 
           {options.map((option, index) => {
             return (
@@ -511,11 +511,11 @@ const MCQ = ({ game, isMockTest }) => {
               <>
                 {
                   selectedChoice === index ?
-                    <div onClick={() => { setSelectedChoice(index) }} className="flex border border-green-500 rounded-sm py-4 px-2  cursor-pointer" key={option} style={{ borderColor: "#4CA054" }}>
-                      <div className={`w-12 h-12 border  p-4  text-white flex items-center justify-center rounded-full bg-green-500`} style={{ backgroundColor: "#4CA054",borderRadius: "5px" }}>
+                    <div onClick={() => { setSelectedChoice(index) }} className="flex border border-green-500 rounded-sm py-2 px-2  cursor-pointer" key={option} style={{ borderColor: "#4CA054" }}>
+                      <div className={`w-12 h-12 border  p-2 md:text-xl text-md  text-white flex items-center justify-center rounded-full bg-green-500`} style={{ backgroundColor: "#4CA054",borderRadius: "5px" }}>
                         {index + 1 == 1 ? "A" : index + 1 == 2 ? "B" : index + 1 == 3 ? "C" : "D"}
                       </div>
-                      <div className="flex-grow flex items-center justify-left px-4">
+                      <div className="flex-grow flex items-center justify-left px-4 md:text-xl text-md">
                         {option}
                       </div>
                       <div className="flex justify-center items-center w-16">
@@ -525,11 +525,11 @@ const MCQ = ({ game, isMockTest }) => {
                       </div>
                     </div>
                     :
-                    <div onClick={() => { setSelectedChoice(index) }} className="flex border border-green-500 rounded-sm py-4 px-2 cursor-pointer" key={option}>
-                      <div className={`w-12 h-12 border  p-4  text-white flex items-center justify-center rounded-full bg-gray-500`} style={{ backgroundColor: "#d3d3d3",borderRadius: "5px" }}>
+                    <div onClick={() => { setSelectedChoice(index) }} className="flex border border-green-500 rounded-sm py-2 px-2 cursor-pointer" key={option}>
+                      <div className={`w-12 h-12 border  p-2  text-white flex items-center justify-center rounded-full bg-gray-500`} style={{ backgroundColor: "#d3d3d3",borderRadius: "5px" }}>
                         {index + 1 == 1 ? "A" : index + 1 == 2 ? "B" : index + 1 == 3 ? "C" : "D"}
-                      </div>
-                      <div className="flex-grow flex items-center justify-left px-4">
+                      </div> 
+                      <div className="flex-grow flex items-center justify-left px-4 md:text-xl text-sm">
                         {option}
                       </div>
                       <div class="flex justify-center items-center w-16">
@@ -604,7 +604,7 @@ const MCQ = ({ game, isMockTest }) => {
             <div>
               <Card className="w-full mt-4 rounded-sm">
                 <CardHeader className="flex flex-row items-center">
-                  <CardDescription className="flex-grow text-lg">
+                  <CardDescription className="flex-grow text-md md:text-lg">
                     Correct Answer is <span className="text-green-600">{game[questionIndex].answer}</span>
                     <br />
                     <br />

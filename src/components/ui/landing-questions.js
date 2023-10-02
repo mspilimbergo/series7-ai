@@ -251,14 +251,19 @@ import CTAButton from "./CTAButton";
             <QuestionComponent question={question} handleQuestionAnswer={handleQuestionAnswer} key={index} questionIndex={index} />
           )
         })}
-        {finishedQuiz && (
-          <div className="flex self-center">          
-            <CTAButton text={"Continue Practicing"}/>
+        {finishedQuiz ? 
+        (
+          <div className="flex justify-center">          
+            <CTAButton text={"Continue Practicing"}/>            
           </div>
-        )}        
-         <div>          
+        )
+        : 
+        (
+          <div className="flex justify-center">          
             <Button text={"Check answers"} onClick={() => setFinishedQuiz(!finishedQuiz)} >Check Answers</Button>
           </div>
+        )}        
+         
         {/* <div className="flex flex-row justify-between">
           <div className="flex flex-col">
           <p className='text-[#536E96] text-2xl mb-4 font-bold'>Question 1</p>

@@ -32,11 +32,11 @@ const Dasboard = async (props: Props) => {
       <main className="p-8 mx-auto max-w-7xl">
         <DashboardNavBar />
             <div className="flex justify-center flex-col">
-            <h2 className="text-green-600		 mr-2 text-3xl font-bold tracking-tight text-center ">Series 7 AI Tools</h2>      
-            <div className="mt-2 border-green-600 rounded border-t border-4 border-gray-400 w-[180px] mx-auto"></div>
-            <h3 className="text-gray-500 mt-10 text-xl text-center">Use our friendly AI problem set generator to practice, using timed or tutor mode. </h3>
+            <h2 className="text-green-600	mr-2 text-2xl md:text-3xl font-bold tracking-tight text-center mt-16 md:mt-16">Series 7 AI Tools</h2>      
+            <div className="mt-2 border-green-600 rounded border-t border-4 border-gray-400 w-[120px] md:w-[180px] mx-auto"></div>
+            <h3 className="text-gray-500 mt-10 text-sm md:text-xl text-center">Use our friendly AI problem set generator to practice, using timed or tutor mode. </h3>
           </div>
-          <div className="flex flex-col md:flex-row gap-20 justify-center mt-10">
+          <div className="flex flex-col md:flex-row gap-10 md:gap-20 justify-center mt-10">
             <QuizMeCard />
             {/* <QuizMeCard /> */}
             <TutorCard />

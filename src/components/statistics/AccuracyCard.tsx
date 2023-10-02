@@ -8,7 +8,7 @@ const AccuracyCard = ({ accuracy }: Props) => {
   return (
     <Card className="md:col-span-4" style={{color: "#4CA054"}}>
       <CardHeader className="flex flex-row items-center justify-between pb-2 space-y-0">
-        <CardTitle className="text-2xl font-bold text-green-600">
+        <CardTitle className="text-lg md:text-2xl font-bold text-green-600">
           <span>Average Accuracy</span>
           <div className="text-base font-medium text-gray-600 mt-4">{accuracy.toString() + "%"}</div>
           </CardTitle>

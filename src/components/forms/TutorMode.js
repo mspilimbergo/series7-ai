@@ -128,36 +128,34 @@ const TutorMode = () => {
           <CardDescription>Choose a topic</CardDescription> */}
           <form onSubmit={handleSubmit}> 
           {/* <div className="flex flew-row gap-4 bg-slate-600 w-[800px]"> */}
-          <div className="grid grid-cols-2 gap-4 grid-flow-row">
-            {/* <div className="flex flex-col flex-none grow-0 basis-1/2"> */}
-            <div>
-                  <label>Topic</label>
-                  <MultiSelect
-                    options={topics}
-                    value={topicsSelected}
-                    onChange={(selectedOptions) => setTopicsSelected(selectedOptions)}
-                    labelledBy="Select"
-                    isCreatable={false}
-                    className="mt-4"
-                  />
-                  <p className="text-sm text-slate-400 mt-4">Please provide any topic you would like to be quizzed on here.</p>
-              </div>
-            {/* <div className="flex flex-col flex-none basis-1/2"> */}
-            <div>
-                <label>Number of Questions</label>
-                <Input
-                  type="number"
-                  placeholder="How many questions?"
-                  value={numberOfQuestions}
-                  onChange={(e) => setNumberOfQuestions(e.target.value)}
-                  min={1}
-                  max={30}
-                  className="mt-4"
-                />
-                {/* <p>You can choose how many questions you would like to be quizzed on here.</p> */}
-                <p className="text-sm text-slate-400 mt-4">You can choose how many questions you would like to be quizzed on here.</p>
-              </div>
-          </div>     
+          <div className="flex flex-col md:flex-row gap-4">
+    <div className="flex-grow">
+        <label>Topic</label>
+        <MultiSelect
+            options={topics}
+            value={topicsSelected}
+            onChange={(selectedOptions) => setTopicsSelected(selectedOptions)}
+            labelledBy="Select"
+            isCreatable={false}
+            className="mt-4"
+        />
+        <p className="text-sm text-slate-400 md:mt-4">Please provide any topic you would like to be quizzed on here.</p>
+    </div>
+    <div className="flex-grow">
+        <label>Number of Questions</label>
+        <Input
+            type="number"
+            placeholder="How many questions?"
+            value={numberOfQuestions}
+            onChange={(e) => setNumberOfQuestions(e.target.value)}
+            min={1}
+            max={30}
+            className="mt-4"
+        />
+        <p className="text-sm text-slate-400 mb-4 md:mt-4">You can choose how many questions you would like to be quizzed on here.</p>
+    </div>
+</div>
+
           <div className="flex justify-center mt-8">
            <div className="flex flex-row gap-4">
            <Button

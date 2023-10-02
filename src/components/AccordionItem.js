@@ -2,29 +2,31 @@
 
 import { useRef, useState } from 'react';
 
-const DropDownMenu = () => {
-  return (
-    <div>
+// const DropDownMenu = () => {
+//   return (
+//     <div>
       
-    </div>
-  )
-}
+//     </div>
+//   )
+// }
 
-interface Props {
-    id: number;
-    question: string;
-    answer: string;
-  }
+// interface Props {
+//     id: number;
+//     question: string;
+//     answer: string;
+//   }
 
-const AccordionItem: React.FC<Props> = ({ question, answer, id }) => {
+// const AccordionItem = (question, answer, id) => {
+
+  const AccordionItem = (data) => {
     const [activeIndex, setActiveIndex] = useState<number | null>(null);
     const [height, setHeight] = useState<number>(0);
     const contentRef = useRef<HTMLDivElement>(null);
   
-    const handleClick = (idx: number) => {
+    const handleClick = (idx) => {
       if (activeIndex !== idx) {
         setActiveIndex(idx);
-        setHeight(contentRef.current!.clientHeight);
+        setHeight(contentRef.current.clientHeight);
       } else {
         setActiveIndex(null);
         setHeight(0);
@@ -45,7 +47,7 @@ const AccordionItem: React.FC<Props> = ({ question, answer, id }) => {
           }`}
         >
           <div className='flex'>
-            <span className='lg:text-lg font-semibold md:text-xl xl:text-xl text-left'>{question}</span>
+            <span className='lg:text-lg font-semibold md:text-xl xl:text-xl text-left'>{data.topic}</span>
             {/* {activeIndex === id ? (
               // <AiOutlineArrowUp size={30} className='w-5 h-5 xl:w-8 xl:h-8 stroke-[2px]' />
               <AiOutlineArrowUp size={25}  />
@@ -63,7 +65,10 @@ const AccordionItem: React.FC<Props> = ({ question, answer, id }) => {
           style={{ height: `${activeIndex === id ? `${height}px` : 0}` }}
         >
           <div ref={contentRef} className='max-w-5xl pt-3 xl:pt-4'>
-            <p className='text-sm lg:text-base xl:text-lg'>{answer}</p>
+            {/* <p className='text-sm lg:text-base xl:text-lg'>{answer}</p> */}
+            {/* {answer} */}
+            {/* <answer /> */}
+            {/* <answer /> */}
           </div>
         </div>
       </li>

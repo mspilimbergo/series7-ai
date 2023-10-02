@@ -17,22 +17,23 @@ const QuizMeCard = (props: Props) => {
     >
       <CardContent className="pb-0">
         <div className="flex justify-center">
-          <Image src="/bell.png" width={250} height={250} alt={'mock-test'} />
+          <Image src="/bell.png" width={250} height={250} className="w-[200px]" alt={'mock-test'}/>
         </div>
+
         {/* <MockTestDialogue /> */}
       </CardContent>
       <CardHeader className="pt-0">
         <div className="flex justify-center">
-          <CardTitle className="text-4xl font-bold">Mock Test</CardTitle>
+          <CardTitle className="text-xl md:text-4xl font-bold">Mock Test</CardTitle>
         </div>
-        <CardDescription className="text-lg text-muted-foreground text-center mt-4">
+        <CardDescription className="text-sm md:text-lg text-muted-foreground text-center mt-4">
           {/* <p className="text-lg text-muted-foreground text-center mt-4"> */}
           Timed mode gives you a full mock exam <br /> with live testing simulation.
           {/* </p> */}
         </CardDescription>
       </CardHeader>
       <CardFooter className="md:pb-0">
-        <Button className="w-full rounded-sm mt-8 md:h-[60px] md:text-xl">Start Mock Test</Button>
+        <Button className="w-full rounded-sm mt-2 md:mt-8 md:h-[60px] md:text-xl">Start Mock Test</Button>
       </CardFooter>
     </Card>
   );

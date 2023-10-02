@@ -16,7 +16,7 @@ function HomeNavBar() {
       <div className={"flex items-center justify-between h-full gap-2 md:px-0 mx-auto md:max-w-[1480px]"}> 
         {/* Logo */}
         <Link href={"/"} className="flex items-center gap-2">
-            <Image src={"/Logo.svg"} width={160} height={160} alt="loading" />
+            <Image src={"/Logo.svg"} width={140} height={140} alt="loading" />
             {/* <p className="rounded-lg border-2 border-b-4 border-r-4 border-black px-2 py-1 text-xl font-bold transition-all hover:-translate-y-[2px] md:block dark:border-white">
             Series 7 Practice
           </p>           */}

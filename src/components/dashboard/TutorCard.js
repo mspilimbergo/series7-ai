@@ -17,22 +17,22 @@ const TutorCard = (props) => {
     >    
       <CardContent className="pb-0">
         <div className="flex justify-center">
-        <Image src="/notes.png" width={250} height={250} alt={'mock-test'} />
+        <Image src="/notes.png" width={250} height={250} className="w-[200px]" alt={'mock-test'} />
         </div>        
         {/* <MockTestDialogue /> */}
       </CardContent>
       <CardHeader className="pt-0">
           <div className="flex justify-center">
-          <CardTitle className="text-4xl font-bold">Tutor Mode</CardTitle>
+          <CardTitle className="text-xl md:text-4xl font-bold">Tutor Mode</CardTitle>
           </div>
-          <CardDescription className="text-lg text-muted-foreground text-center mt-4">
+          <CardDescription className="text-sm md:text-lg text-muted-foreground text-center mt-4">
           {/* <p className="text-lg text-muted-foreground text-center mt-4"> */}
-          Tutor mode gives you control over what kinds <br/> of questions and how many questions, as well <br/> as detailed explanations after each question.
+          Tutor mode gives you control over what kinds of questions and how many questions, as well as detailed explanations after each question.
         {/* </p> */}
         </CardDescription> 
         </CardHeader>       
       <CardFooter className="md:pb-0">
-      <Button className="w-full rounded-sm mt-8 md:h-[60px] md:text-xl">Start Tutor Mode</Button>
+      <Button className="w-full rounded-sm mt-2 md:mt-8 md:h-[60px] md:text-xl">Start Tutor Mode</Button>
       </CardFooter>
     </Card>
   );

@@ -8,7 +8,7 @@ const CTA = () => {
         <div>
             <h1 className=' text-2xl font-semibold'>Make use of the world's best <span className='text-[#20B486]'>Series 7</span> practice tool and guarantee yourself a passing score! </h1>
             {/* <p className='py-2 text-lg text-gray-600'>Start learning by registering for free</p> */}
-            <Button className="mt-10"> Subscribe Now!</Button>              
+            <Button className="mt-10"       > Subscribe Now!</Button>              
         </div>
         <div className="flex flex-row gap-4 mt-10">
           <Link href={'/privacy'}>Privacy Policy |</Link>

@@ -37,7 +37,7 @@ export default function SignIn() {
 
     useEffect(() => {
         checkLogin()
-        console.log(formData) 
+        // console.log(formData) 
     }, [formData])
     // const router = useRouter();
 
