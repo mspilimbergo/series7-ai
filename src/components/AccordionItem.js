@@ -16,11 +16,11 @@ import { useRef, useState } from 'react';
 //     answer: string;
 //   }
 
-// const AccordionItem = (question, answer, id) => {
+const AccordionItem = ({question, answer, id}) => {
 
-  const AccordionItem = (data) => {
-    const [activeIndex, setActiveIndex] = useState<number | null>(null);
-    const [height, setHeight] = useState<number>(0);
+  // const AccordionItem = (data) => {
+    const [activeIndex, setActiveIndex] = useState();
+    const [height, setHeight] = useState();
     const contentRef = useRef<HTMLDivElement>(null);
   
     const handleClick = (idx) => {
@@ -47,7 +47,7 @@ import { useRef, useState } from 'react';
           }`}
         >
           <div className='flex'>
-            <span className='lg:text-lg font-semibold md:text-xl xl:text-xl text-left'>{data.topic}</span>
+            <span className='lg:text-lg font-semibold md:text-xl xl:text-xl text-left'>{question}</span>
             {/* {activeIndex === id ? (
               // <AiOutlineArrowUp size={30} className='w-5 h-5 xl:w-8 xl:h-8 stroke-[2px]' />
               <AiOutlineArrowUp size={25}  />

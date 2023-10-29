@@ -19,8 +19,8 @@ export default async function BlogDetails({ slug }: Props) {
                     <h3 className='font-[900] text-[30px] md:text-[50px] tracking-[-0.03em] leading-[1] mb-3'>{data?.title}</h3>
                     <div className="py-3">
                         <div className="flex items-center gap-2">
-                            <Image width={40} height={40} className="w-10 h-10 rounded-full" src="https://uploads.republic.com/p/users/avatars/small/001/421/094/1421094-1696100265-805528ae8b5970b1802986d5a373fc6f4145908b.jpg" alt="Rounded avatar" />
-                            <h4 className='text-lg font-semibold mr-3'>Md Azadur Rahman</h4>
+                            {/* <Image width={40} height={40} className="w-10 h-10 rounded-full" src="https://uploads.republic.com/p/users/avatars/small/001/421/094/1421094-1696100265-805528ae8b5970b1802986d5a373fc6f4145908b.jpg" alt="Rounded avatar" /> */}
+                            <h4 className='text-lg font-semibold mr-3'>Series 7 Team</h4>
                             <p className='text-xs text-gray-700 font-medium'>{data?.updated_date}</p>
                         </div>
                     </div>

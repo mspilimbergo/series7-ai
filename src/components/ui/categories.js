@@ -1,4 +1,12 @@
 'use client'
+// import AccordionItem from '../AccordionItem';
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+
 const topics = [
   {
     id: 1,
@@ -52,9 +60,9 @@ const topics = [
 
 const Item1 = () => {
   return (
-    <ul className="list-disc pl-6 mt-2">
-        <li>Standards and required approvals of public communications</li>
-        <li>Types of communications (e.g., retail, institutional, correspondence)</li>
+    <ol >
+        <li>1. Standards and required approvals of public communications</li>
+        <li>2. Types of communications (e.g., retail, institutional, correspondence)</li>
         <li>Seminars, lectures and other group forum requirements</li>
         <li>Product specific advertisements and disclosures</li>
         <li>Investment company products and variable contracts</li>
@@ -62,7 +70,7 @@ const Item1 = () => {
         <li>Municipal securities</li>
         <li>Research reports (e.g., quiet periods, distribution, third-party research)</li>
         <li>Government securities, collateralized mortgage obligations (CMOs), certificates of deposit (CDs)</li>
-    </ul>
+    </ol>
   )
 }
 
@@ -99,7 +107,6 @@ const Item3 = () => {
 }
 
 
-import { AccordianItem } from '@/components/AccordionItem';
 const Categories = () => {
 
 
@@ -112,24 +119,101 @@ const Categories = () => {
 
   return (
     <div className='w-full bg-[#F0FBF7] py-24'>
-        <div className='md:max-w-[1480px] m-auto max-w-[600px]  px-4 md:px-20'>
-                <h1 className='md:leading-[72px] text-3xl font-bold'>Series 7 <span className='text-[#20B486]'>Subjects</span></h1>
+        <div className='md:max-w-[1480px] m-auto max-w-[600px]  px-4 md:px-20'> 
+                <h1 className='md:leading-[72px] text-3xl font-bold'>Series 7 <span className='text-[#20B486]'>Subjects</span></h1> 
                 {/* <p className='text-lg text-gray-600 mb-4'>Various versions have evolved over the years, sometimes by accident.</p> */}
 
                 <div className='grid grid-cols-1 py-12 md:gap-4 gap-4'>
-                    {/* <AccordianItem data={cards[0]} />  */}
-                    {/* {cards[0].topic} */}
                 </div>
+                <Accordion type="single" collapsible className="w-full">
+                <AccordionItem value="item-1">
+                  <AccordionTrigger>Seeks Business for the Broker-Dealer from Customers and Potential
+Customers</AccordionTrigger>
+                  <AccordionContent>
+                    <Item1 />
+                  </AccordionContent>
+                </AccordionItem>
+                <AccordionItem value="item-2">
+                  <AccordionTrigger>Opens Accounts After Obtaining and Evaluating Customers’ Financial Profile and Investment Objectives</AccordionTrigger>
+                  <AccordionContent>
+                    Yes. It comes with default styles that matches the other
+                    components&apos; aesthetic.
+                  </AccordionContent>
+                </AccordionItem>
+                <AccordionItem value="item-3">
+                  <AccordionTrigger>Provides Customers with Information About Investments, Makes Suitable Recommendations, Transfers Assets and Maintains Appropriate Records</AccordionTrigger>
+                  <AccordionContent>
+                    Yes. It&apos;s animated by default, but you can disable it if you
+                    prefer.
+                  </AccordionContent>
+                </AccordionItem>
+                <AccordionItem value="item-4">
+                  <AccordionTrigger>Obtains and Verifies Customers’ Purchase and Sales Instructions; Processes, Completes and Confirms Transactions</AccordionTrigger>
+                  <AccordionContent>
+                    Yes. It&apos;s animated by default, but you can disable it if you
+                    prefer.
+                  </AccordionContent>
+                </AccordionItem>
+                <AccordionItem value="item-5">
+                  <AccordionTrigger>Understanding and Explaining the Securities Markets, the Broker Dealer’s Operations, and Customer Accounts</AccordionTrigger>
+                  <AccordionContent>
+                    Yes. It&apos;s animated by default, but you can disable it if you
+                    prefer.
+                  </AccordionContent>
+                </AccordionItem>
+                <AccordionItem value="item-6">
+                  <AccordionTrigger>Understanding and Explaining Other Packaged Products, Retirement Plans, and Regulations</AccordionTrigger>
+                  <AccordionContent>
+                    Yes. It&apos;s animated by default, but you can disable it if you
+                    prefer.
+                  </AccordionContent>
+                </AccordionItem>
+                <AccordionItem value="item-7">
+                  <AccordionTrigger>Understanding and Explaining Options, Rights, Warrants, and Taxes</AccordionTrigger>
+                  <AccordionContent>
+                    Yes. It&apos;s animated by default, but you can disable it if you
+                    prefer.
+                  </AccordionContent>
+                </AccordionItem>
+                <AccordionItem value="item-8">
+                  <AccordionTrigger>Understanding and Explaining Customer Accounts, Margin Accounts, and Regulations</AccordionTrigger>
+                  <AccordionContent>
+                    Yes. It&apos;s animated by default, but you can disable it if you
+                    prefer.
+                  </AccordionContent>
+                </AccordionItem>
+              </Accordion>
                 {/* <div className='grid grid-cols-1 py-12 md:gap-4 gap-4'>
                 {topics.map((topic) => (
                   <div className='' key={topic.id}>
-                    <AccordionItem {...topic} key={topic.id} />
+                    <AccordionItem question={topic.question} answer={topic.answer} id={topic.id} key={topic.id} />
                   </div>
                 ))}                   
                 </div> */}
         </div>
     </div>
   )
+
+  // return (
+    // <div className='w-full bg-[#F0FBF7] py-24'>
+        {/* <div className='md:max-w-[1480px] m-auto max-w-[600px]  px-4 md:px-20'> */}
+                {/* <h1 className='md:leading-[72px] text-3xl font-bold'>Series 7 <span className='text-[#20B486]'>Subjects</span></h1> */}
+                {/* <p className='text-lg text-gray-600 mb-4'>Various versions have evolved over the years, sometimes by accident.</p> */}
+
+                // <div className='grid grid-cols-1 py-12 md:gap-4 gap-4'>
+                    {/* <AccordianItem data={cards[0]} />  */}
+                    {/* {cards[0].topic} */}
+                // </div>
+                // <div className='grid grid-cols-1 py-12 md:gap-4 gap-4'>
+                // {topics.map((topic) => (
+                  // <div className='' key={topic.id}>
+                    // <AccordionItem question={topic.question} answer={topic.answer} id={topic.id} key={topic.id} />
+                  // </div>
+                // ))}                   
+                // </div>
+        // </div>
+    // </div>
+  // )
 }
 
 export default Categories
