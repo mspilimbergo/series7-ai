@@ -120,7 +120,7 @@ const TutorMode = () => {
     // <main>
     <div className="absolute -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2  md:w-995">
       <h2 className="text-green-600		 mr-2 text-3xl font-bold tracking-tight text-center ">Tutor Mode</h2>      
-      <div className="mt-2 border-green-600 rounded border-t border-4 border-gray-400 w-[180px] mx-auto"></div>
+      <div className="mt-2 border-green-600 rounded border-t border-4 w-[180px] mx-auto"></div>
       <h3 className="text-gray-500 mt-4 text-xl text-center">Choose a topic </h3>
       <Card className="mt-10">
         <CardHeader>
@@ -128,8 +128,8 @@ const TutorMode = () => {
           <CardDescription>Choose a topic</CardDescription> */}
           <form onSubmit={handleSubmit}> 
           {/* <div className="flex flew-row gap-4 bg-slate-600 w-[800px]"> */}
-          <div className="flex flex-col md:flex-row gap-4">
-    <div className="flex-grow">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+    <div className="">
         <label>Topic</label>
         <MultiSelect
             options={topics}
@@ -141,7 +141,7 @@ const TutorMode = () => {
         />
         <p className="text-sm text-slate-400 md:mt-4">Please provide any topic you would like to be quizzed on here.</p>
     </div>
-    <div className="flex-grow">
+    <div className="">
         <label>Number of Questions</label>
         <Input
             type="number"

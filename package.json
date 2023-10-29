@@ -40,6 +40,7 @@
     "date-fns": "^2.30.0",
     "eslint": "8.45.0",
     "eslint-config-next": "13.4.12",
+    "html-react-parser": "^4.2.10",
     "keyword-extractor": "^0.0.25",
     "lucide-react": "^0.263.0",
     "micro": "^10.0.1",
@@ -65,6 +66,7 @@
     "zod": "^3.21.4"
   },
   "devDependencies": {
+    "@tailwindcss/typography": "^0.5.10",
     "@types/react-slick": "^0.23.10",
     "@types/string-similarity": "^4.0.0",
     "encoding": "^0.1.13",
