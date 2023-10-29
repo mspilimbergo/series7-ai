@@ -82,7 +82,8 @@ export const blogsArray: Blog[] = [
 
 <p>We recommend that you take a practice exam at least once a week during the final two months of your studies, in addition to practice problems on a daily basis for topics you want to improve upon.</p>
 `,
-        img: 'https://uploads.republic.com/p/blog/posts/cover_photos/large/000/001/348/1348-1696867353-3b0bbcd992a586d003ed6544fb424177ac3d8fd3.jpg'
+        img: 'https://vojdhxlddvfwjuygvxgv.supabase.co/storage/v1/object/public/blog_images/how-to-pass.png'
+        // img: 'https://uploads.republic.com/p/blog/posts/cover_photos/large/000/001/348/1348-1696867353-3b0bbcd992a586d003ed6544fb424177ac3d8fd3.jpg'
     },
     {
         id: 2,
@@ -163,7 +164,7 @@ export const blogsArray: Blog[] = [
 <p><strong>How often to take mock tests and practice problems?</strong></p>
 <p>We recommend that you take a practice exam at least once a week during the final two months of your studies, in addition to practice problems on a daily basis for topics you want to improve upon. The Series 7 exam is a challenging exam, but it is possible to pass it with the right preparation.</p>
 `,
-        img: 'https://uploads.republic.com/p/blog/posts/cover_photos/medium/000/001/315/1315-1696249078-1a7d1aa37a41748d441e8856f2ed1785fed8b43b.jpg'
+        img: 'https://vojdhxlddvfwjuygvxgv.supabase.co/storage/v1/object/public/blog_images/how-to-study.png'
     },
     {
         id: 3,
