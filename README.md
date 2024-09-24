@@ -1,6 +1,6 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+## Series 7 AI uses GPT to create test prep material for the series 7 financial exam. 
 
 First, run the development server:
 
