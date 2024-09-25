@@ -1,23 +1,25 @@
 ## What is Series 7 AI? 
 Series 7 AI uses GPT to create test prep material for the series 7 financial exam. 
 
-### Features (Build by me)
+### Features
 - Authentication via Supabase (with password reset, subscription validation, etc)
-- Stripe Payment gated
-- User Profile Creation + editing 
+- Stripe payment gate
+- User profile creation + editing 
 - GPT aided test prep creation
 - Live testing simulation
 - Practice test with feedback + scoring
 - Question feedback
 
+### My Contributions
+- API Design
+- Webhook Implementation
+- Next.js front-end
+- Design
+- Prompt Creation
+- Data cleansing
+- 
 ### Demo
-
-### Mock Test & Scoring
-
-
-https://github.com/user-attachments/assets/c31ca0dd-3843-45a4-ba54-b417e3a14cbb
-
-
+https://github.com/user-attachments/assets/1247b4dc-daa6-4716-a530-a74c96d80edf
 
 -----------------------------------------------------
 ## Project Setup
