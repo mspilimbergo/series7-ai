@@ -10,6 +10,9 @@ Series 7 AI uses GPT to create test prep material for the series 7 financial exa
 - Practice test with feedback + scoring
 - Question feedback
 
+### Demo
+https://github.com/user-attachments/assets/1247b4dc-daa6-4716-a530-a74c96d80edf
+
 ### My Contributions
 - API Design
 - Webhook Implementation
@@ -17,9 +20,7 @@ Series 7 AI uses GPT to create test prep material for the series 7 financial exa
 - Design
 - Prompt Creation
 - Data cleansing
-- 
-### Demo
-https://github.com/user-attachments/assets/1247b4dc-daa6-4716-a530-a74c96d80edf
+
 
 -----------------------------------------------------
 ## Project Setup
